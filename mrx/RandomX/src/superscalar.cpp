@@ -849,8 +849,8 @@ namespace randomx {
 
 
 		//0
-		//prog.asicLatency = asicLatencyMax;
-		prog.asicLatency = 0;
+		prog.asicLatency = asicLatencyMax;
+
 		prog.codeSize = codeSize;
 		prog.macroOps = macroOpCount;
 		
