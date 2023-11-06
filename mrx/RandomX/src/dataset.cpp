@@ -184,7 +184,7 @@ namespace randomx {
 			for (unsigned q = 0; q < 8; ++q)
 				rl[q] ^= load64_native(mixBlock + 8 * q);
 
-			registerValue = rl[prog.getAddressRegister()];
+			//registerValue = rl[prog.getAddressRegister()];
 		//}
 
 		memcpy(out, &rl, CacheLineSize);
