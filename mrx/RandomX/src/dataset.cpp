@@ -192,7 +192,7 @@ namespace randomx {
 			//executeSuperscalar(rl, prog, &cache->reciprocalCache);
 
 			
-				rl[0] ^= load64_native(mixBlock + 0);
+				rl[0] ^= load64_native(mixBlock);
 				rl[1] ^= load64_native(mixBlock + 8);
 				rl[2] ^= load64_native(mixBlock + 16);
 				rl[3] ^= load64_native(mixBlock + 24);
