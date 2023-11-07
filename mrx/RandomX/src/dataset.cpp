@@ -126,7 +126,7 @@ namespace randomx {
 
 		cache->reciprocalCache.clear();
 		randomx::Blake2Generator gen(key, keySize);
-		for (int i = 0; i < 4; ++i) {
+		for (int i = 0; i < RANDOMX_CACHE_ACCESSES; ++i) {
 			randomx::generateSuperscalar(cache->programs[i], gen);
 			for (unsigned j = 0; j < cache->programs[i].getSize(); ++j) {
 				auto& instr = cache->programs[i](j);
