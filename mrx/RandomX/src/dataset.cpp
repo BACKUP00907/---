@@ -171,7 +171,7 @@ namespace randomx {
 		return memory + (registerValue & mask) * CacheLineSize;
 	}
 
-	inline void initDatasetItem(randomx_cache* cache, uint8_t* out, uint64_t itemNumber) {
+	void initDatasetItem(randomx_cache* cache, uint8_t* out, uint64_t itemNumber) {
 		int_reg_t rl[8];
 		uint8_t* mixBlock;
 		uint64_t registerValue = itemNumber;
