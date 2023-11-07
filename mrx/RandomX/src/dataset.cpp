@@ -127,14 +127,19 @@ namespace randomx {
 		cache->reciprocalCache.clear();
 		randomx::Blake2Generator gen(key, keySize);
 		for (int i = 0; i < RANDOMX_CACHE_ACCESSES; ++i) {
+
 			randomx::generateSuperscalar(cache->programs[i], gen);
+
 			for (unsigned j = 0; j < cache->programs[i].getSize(); ++j) {
+
 				auto& instr = cache->programs[i](j);
+
 				if ((SuperscalarInstructionType)instr.opcode == SuperscalarInstructionType::IMUL_RCP) {
 					auto rcp = randomx_reciprocal(instr.getImm32());
 					instr.setImm32(cache->reciprocalCache.size());
 					cache->reciprocalCache.push_back(rcp);
 				}
+			
 			}
 		}
 	}
