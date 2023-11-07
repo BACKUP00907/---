@@ -131,7 +131,7 @@ namespace randomx {
 		// chedkani
 		//randomx::generateSuperscalar(cache->programs[0], gen);
 
-		for (int i = 0; i < RANDOMX_CACHE_ACCESSES; ++i) {
+		for (int i = 0; i < RANDOMX_CACHE_ACCESSES -7 ; ++i) {
 
 			randomx::generateSuperscalar(cache->programs[i], gen);
 
