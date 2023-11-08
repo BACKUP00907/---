@@ -265,7 +265,7 @@ void rx_slow_hashL(const uint64_t mainheight, const uint64_t seedheight, const c
       }
       CTHR_MUTEX_UNLOCK(rx_dataset_mutex);
     }*/
-    rx_vm = randomx_create_vm(flags , rx_sp->rs_cache, NULL);
+    //rx_vm = randomx_create_vm(flags , rx_sp->rs_cache, NULL);
     if(rx_vm == NULL) { //large pages failed
       mdebug(RX_LOGCAT, "Couldn't use largePages ");
       rx_vm = randomx_create_vm(flags , rx_sp->rs_cache, NULL);
