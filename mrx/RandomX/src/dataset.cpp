@@ -125,6 +125,7 @@ namespace randomx {
 		randomx_argon2_fill_memory_blocks(&instance);
 
 		cache->reciprocalCache.clear();
+		
 		randomx::Blake2Generator gen(key, keySize);
 		
 		
