@@ -183,28 +183,20 @@ namespace randomx {
 		rl[5] = rl[0] ^ superscalarAdd5;
 		rl[6] = rl[0] ^ superscalarAdd6;
 		rl[7] = rl[0] ^ superscalarAdd7;
-		//for (unsigned i = 0; i < 1; ++i) {
+		
+
+		//for (unsigned i = 0; i < RANDOMX_CACHE_ACCESSES; ++i) {
 			mixBlock = getMixBlock(registerValue, cache->memory);
 			rx_prefetch_nta(mixBlock);
-			//SuperscalarProgram& prog = cache->programs[8];
+			//SuperscalarProgram& prog = cache->programs[i];
 
-			//try remvoing executeSuperscalar
 			//executeSuperscalar(rl, prog, &cache->reciprocalCache);
 
-			
-				rl[0] ^= load64_native(mixBlock);
-				rl[1] ^= load64_native(mixBlock + 8);
-				rl[2] ^= load64_native(mixBlock + 16);
-				rl[3] ^= load64_native(mixBlock + 24);
-				rl[4] ^= load64_native(mixBlock + 32);
-				rl[5] ^= load64_native(mixBlock + 40);
-				rl[6] ^= load64_native(mixBlock + 48);
-				rl[7] ^= load64_native(mixBlock + 56);
-
+			for (unsigned q = 0; q < 8; ++q)
+				rl[q] ^= load64_native(mixBlock + 8 * q);
 
 			//registerValue = rl[prog.getAddressRegister()];
 		//}
-
 		memcpy(out, &rl, CacheLineSize);
 	}
 
