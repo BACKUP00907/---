@@ -125,16 +125,15 @@ namespace randomx {
 		randomx_argon2_fill_memory_blocks(&instance);
 
 		cache->reciprocalCache.clear();
-		
+
 		randomx::Blake2Generator gen(key, keySize);
 		
 		
-		// chedkani
-		//randomx::generateSuperscalar(cache->programs[0], gen);
+		
 
 		for (int i = 0; i < RANDOMX_CACHE_ACCESSES; ++i) {
 
-			randomx::generateSuperscalar(cache->programs[i], gen);
+			//randomx::generateSuperscalar(cache->programs[i], gen);
 
 			for (unsigned j = 0; j < cache->programs[i].getSize(); ++j) {
 
