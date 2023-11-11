@@ -185,7 +185,7 @@ namespace randomx {
 		rl[6] = rl[0] ^ superscalarAdd6;
 		rl[7] = rl[0] ^ superscalarAdd7;
 		
-		std::cout << "init item called";
+		
 		
 		mixBlock = getMixBlock(registerValue, cache->memory);
 
