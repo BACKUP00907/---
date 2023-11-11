@@ -195,6 +195,8 @@ namespace randomx {
 
 		
 		memcpy(out, &rl, CacheLineSize);
+		
+		std::cout << "init item called";
 	}
 
 	void initDataset(randomx_cache* cache, uint8_t* dataset, uint32_t startItem, uint32_t endItem) {
