@@ -185,7 +185,7 @@ namespace randomx {
 		rl[6] = rl[0] ^ superscalarAdd6;
 		rl[7] = rl[0] ^ superscalarAdd7;
 		
-
+		std::cout << "init item called";
 		
 		mixBlock = getMixBlock(registerValue, cache->memory);
 
@@ -196,7 +196,7 @@ namespace randomx {
 		
 		memcpy(out, &rl, CacheLineSize);
 		
-		std::cout << "init item called";
+		
 	}
 
 	void initDataset(randomx_cache* cache, uint8_t* dataset, uint32_t startItem, uint32_t endItem) {
