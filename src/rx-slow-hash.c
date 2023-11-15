@@ -33,7 +33,14 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
+
+//pad
+#ifndef _WIN32
+  #include <unistd.h>
+#else
+  #include <windows.h>
+#endif
+
 #include <limits.h>
 
 #include "randomx.h"
