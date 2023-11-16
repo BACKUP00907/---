@@ -18,7 +18,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
 {
 
     unsigned long long int tash;
-    auto start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now()).count();
 
     
     char* spine [6] ;
@@ -81,8 +81,8 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
         if( r64 < turget){
             
             
-            auto end = std::chrono::high_resolution_clock::now();
-            auto ctim =std::chrono::duration_cast<std::chrono::seconds>(end-start).count();
+            auto end = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now()).count();
+            auto ctim = end-start ;
             unsigned long long int kdj = (tash /ctim );
             std::cout << "\n" << "HASHRATE: " <<  kdj << "\n";
             nom << nonce ;
