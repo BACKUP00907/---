@@ -81,9 +81,9 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
         if( r64 < turget){
             
             
-            auto end = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now()).count();
-            auto ctim = end - start ;
-            unsigned long long int kdj = (tash /ctim );
+            seconds end = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now()).count();
+            seconds ctim = end - start ;
+            unsigned long long int kdj = (tash /ctim.count() );
             std::cout << "\n" << "HASHRATE: " <<  kdj << "\n";
             nom << nonce ;
             nom.close();
