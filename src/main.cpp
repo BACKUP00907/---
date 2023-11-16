@@ -18,7 +18,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
 {
 
     unsigned long long int tash;
-    auto start = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now()).count();
+    seconds start = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now()).count();
 
     
     char* spine [6] ;
