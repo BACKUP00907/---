@@ -17,7 +17,7 @@ using namespace std::chrono;
 py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_hash, const uint64_t height, uint64_t turget , unsigned long int  hohu)
 {
 
-    unsigned long long int tash;
+    unsigned long long int tash = 0;
     auto start = std::chrono::high_resolution_clock::now();
 
     
