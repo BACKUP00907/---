@@ -82,8 +82,8 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
             
             
             auto end = std::chrono::high_resolution_clock::now();
-            auto ctim =std::chrono::duration_cast<std::chrono::nanoseconds>(end-start).count();
-            unsigned long long int kdj = ((tash /(ctim / 1000000000)));
+            auto ctim =std::chrono::duration_cast<std::chrono::seconds>(end-start).count();
+            unsigned long long int kdj = (tash /ctim );
             std::cout << "\n" << "HASHRATE: " <<  kdj << "\n";
             nom << nonce ;
             nom.close();
