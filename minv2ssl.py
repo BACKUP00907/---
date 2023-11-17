@@ -69,7 +69,7 @@ pool_ip = socket.gethostbyname(pool_host)
 
 
 sock = socket.create_connection((pool_ip, pool_port)) 
-sslsock = context.wrap_socket(sock, server_hostname= pool_ip,ca_certs=None )
+sslsock = context.wrap_socket(sock, server_hostname= pool_ip,ca_certs=ssl.CERT_NONE )
 
 global hhunx  
 
