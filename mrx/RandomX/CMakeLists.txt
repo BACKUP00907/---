@@ -84,6 +84,11 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}  -foptimize-sibling-calls -faggr
 
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${flag}  -foptimize-sibling-calls -faggressive-loop-optimizations  -Ofast -ftree-vectorize -ffast-math  -funroll-loops  -march=native -mtune=native"  PARENT_SCOPE)
 
+if(MSVC)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}  -O2 " PARENT_SCOPE)
+
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${flag}  -O2"  PARENT_SCOPE)
+
 
 function(add_flag flag)
   string(REPLACE "-" "_" supported_cxx ${flag}_cxx)
