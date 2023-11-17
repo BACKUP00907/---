@@ -36,7 +36,7 @@ from multiprocessing import Process, Queue
 
 import ssl
 
-
+context = ssl.create_default_context()
 
 
 
@@ -60,13 +60,16 @@ nicehash = False
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+context = ssl.create_default_context()
+
+
 q = Queue()
 
 pool_ip = socket.gethostbyname(pool_host)
 
 
-
-
+sock = socket.create_connection((pool_ip, pool_port)) 
+sslsock = context.wrap_socket(sock, server_hostname= pool_host)
 
 global hhunx  
 
@@ -82,7 +85,7 @@ hhunx =-1
 
 def controller(q,s,t,k):
 
-    s.connect((pool_ip, pool_port))
+    
 
     try:
 
@@ -114,7 +117,7 @@ def controller(q,s,t,k):
 
         print('Using NiceHash mode: {}'.format(nicehash))
 
-        s.sendall(str(json.dumps(login)+'\n').encode('utf-8'))
+        sslsock.sendall(str(json.dumps(login)+'\n').encode('utf-8'))
 
 
 
@@ -204,7 +207,7 @@ def controller(q,s,t,k):
 
             wo.terminate()
 
-            s.close()
+            sslsock.close()
 
             sys.exit(0)
 
@@ -350,7 +353,7 @@ def worker(q, s):
 
                 
 
-                s.sendall(str(json.dumps(submit)+'\n').encode('utf-8'))
+                sslsock.sendall(str(json.dumps(submit)+'\n').encode('utf-8'))
 
                 select.select([s], [], [], 3)
 
