@@ -302,7 +302,7 @@ def worker(q, s):
 
             
 
-                hash = pyrx.get_rx_hash(fbin,lbin, seed_hash, height,target,nonce,1)
+                hash = pyrx.get_rx_hash(fbin,lbin, seed_hash, height,target,nonce,0)
 
             
 
