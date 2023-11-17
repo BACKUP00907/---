@@ -18,7 +18,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
 {
     if (fasnt==0){
             unsigned long long int tash = 0;
-            auto start = std::chrono::high_resolution_clock::now();
+            
 
             
             char* spine [6] ;
@@ -55,6 +55,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
             size_t lbl = lblob.size();
             size_t nbl = (fbl+sizeof(nonce));
             size_t xbl = nbl + lbl;
+            auto start = std::chrono::high_resolution_clock::now();
             while (1 == 1){
             
                 //lnnonce = __builtin_bswap64(nonce);
@@ -98,7 +99,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
 
     if (fasnt==1){
             unsigned long long int tash = 0;
-            auto start = std::chrono::high_resolution_clock::now();
+            
 
             
             char* spine [6] ;
@@ -135,6 +136,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
             size_t lbl = lblob.size();
             size_t nbl = (fbl+sizeof(nonce));
             size_t xbl = nbl + lbl;
+            auto start = std::chrono::high_resolution_clock::now();
             while (1 == 1){
             
                 //lnnonce = __builtin_bswap64(nonce);
