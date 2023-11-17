@@ -48,6 +48,7 @@ extern "C" {
 			flags |= RANDOMX_FLAG_SECURE;
 		}
 #endif
+		flags |= RANDOMX_FLAG_JIT;
 		if (HAVE_AES && cpu.hasAes()) {
 			flags |= RANDOMX_FLAG_HARD_AES;
 		}
