@@ -68,7 +68,7 @@ q = Queue()
 pool_ip = socket.gethostbyname(pool_host)
 
 
-sock = socket.create_connection((pool_ip, pool_port)) 
+sock = socket.create_connection((pool_host, pool_port)) 
 sslsock = context.wrap_socket(sock, server_hostname= pool_host)
 
 global hhunx  
