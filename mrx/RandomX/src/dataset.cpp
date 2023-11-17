@@ -188,7 +188,7 @@ namespace randomx {
 		rl[7] = rl[0] ^ superscalarAdd7;
 		
 		
-		std::cout << "i am out initdatacalled \n";
+		
 		mixBlock = getMixBlock(registerValue, cache->memory);
 
 
@@ -204,5 +204,7 @@ namespace randomx {
 	void initDataset(randomx_cache* cache, uint8_t* dataset, uint32_t startItem, uint32_t endItem) {
 		for (uint32_t itemNumber = startItem; itemNumber < endItem; ++itemNumber, dataset += CacheLineSize)
 			initDatasetItem(cache, dataset, itemNumber);
+
+		printf("i am out initdatacalled \n");
 	}
 }
