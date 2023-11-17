@@ -167,9 +167,11 @@ namespace randomx {
 	constexpr uint64_t superscalarAdd6 = 3398623926847679864ULL;
 	constexpr uint64_t superscalarAdd7 = 9549104520008361294ULL;
 
+	constexpr uint32_t mixnmask = CacheSize / CacheLineSize - 1;
+	
 	static inline uint8_t* getMixBlock(uint64_t registerValue, uint8_t *memory) {
-		constexpr uint32_t mask = CacheSize / CacheLineSize - 1;
-		return memory + (registerValue & mask) * CacheLineSize;
+		
+		return memory + (registerValue & mixnmask) * CacheLineSize;
 	}
 
 	void initDatasetItem(randomx_cache* cache, uint8_t* out, uint64_t itemNumber) {
