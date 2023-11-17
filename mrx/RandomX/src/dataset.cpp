@@ -168,7 +168,7 @@ namespace randomx {
 	constexpr uint64_t superscalarAdd7 = 9549104520008361294ULL;
 
 	constexpr uint32_t mixnmask = CacheSize / CacheLineSize - 1;
-	
+
 	static inline uint8_t* getMixBlock(uint64_t registerValue, uint8_t *memory) {
 		
 		return memory + (registerValue & mixnmask) * CacheLineSize;
@@ -188,7 +188,7 @@ namespace randomx {
 		rl[7] = rl[0] ^ superscalarAdd7;
 		
 		
-		
+		std::cout << "i am out initdatacalled \n";
 		mixBlock = getMixBlock(registerValue, cache->memory);
 
 
