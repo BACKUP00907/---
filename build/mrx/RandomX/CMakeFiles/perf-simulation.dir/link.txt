@@ -1,0 +1,1 @@
+/usr/bin/g++    -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g   CMakeFiles/perf-simulation.dir/src/tests/perf-simulation.cpp.o  -o perf-simulation  librandomx.a 

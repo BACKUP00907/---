@@ -1,0 +1,1 @@
+/usr/bin/g++    -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g   CMakeFiles/randomx-tests.dir/src/tests/tests.cpp.o  -o randomx-tests  librandomx.a 

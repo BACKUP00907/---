@@ -1,0 +1,176 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "mrx/pybind11",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "mrx/pybind11"
+				},
+				{
+					"build" : "mrx/RandomX",
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "mrx/RandomX",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "pyrx",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "pybind11",
+					"parentIndex" : 0
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "RandomX",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "jit-performance::@3eeb80b93c3b8fad02e7",
+					"jsonFile" : "target-jit-performance-Debug-c9d51210070870340150.json",
+					"name" : "jit-performance",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "perf-simulation::@3eeb80b93c3b8fad02e7",
+					"jsonFile" : "target-perf-simulation-Debug-9194315d2610a9e99423.json",
+					"name" : "perf-simulation",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pyrx::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pyrx-Debug-6a6aae46a469c423fdd7.json",
+					"name" : "pyrx",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "randomx::@3eeb80b93c3b8fad02e7",
+					"jsonFile" : "target-randomx-Debug-5fafd07cb26e585dec10.json",
+					"name" : "randomx",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "randomx-benchmark::@3eeb80b93c3b8fad02e7",
+					"jsonFile" : "target-randomx-benchmark-Debug-54adeeba445a77432d2e.json",
+					"name" : "randomx-benchmark",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "randomx-codegen::@3eeb80b93c3b8fad02e7",
+					"jsonFile" : "target-randomx-codegen-Debug-9a03de60c06c7fd4e69f.json",
+					"name" : "randomx-codegen",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "randomx-tests::@3eeb80b93c3b8fad02e7",
+					"jsonFile" : "target-randomx-tests-Debug-297bac59b6f7547da905.json",
+					"name" : "randomx-tests",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "superscalar-stats::@3eeb80b93c3b8fad02e7",
+					"jsonFile" : "target-superscalar-stats-Debug-3b4a403c9d7751042a68.json",
+					"name" : "superscalar-stats",
+					"projectIndex" : 2
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/workspaces/mxnl/build",
+		"source" : "/workspaces/mxnl"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

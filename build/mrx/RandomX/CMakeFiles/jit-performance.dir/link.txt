@@ -1,0 +1,1 @@
+/usr/bin/g++    -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g   CMakeFiles/jit-performance.dir/src/tests/jit-performance.cpp.o  -o jit-performance  librandomx.a 

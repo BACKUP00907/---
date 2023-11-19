@@ -1,0 +1,177 @@
+[
+{
+  "directory": "/workspaces/mxnl/build",
+  "command": "/usr/bin/g++  -Dpyrx_EXPORTS -I/workspaces/mxnl/mrx/RandomX/src -isystem /workspaces/mxnl/mrx/pybind11/include -isystem /home/codespace/.python/current/include/python3.10     -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native  -g -fPIC -fvisibility=hidden   -std=gnu++11 -o CMakeFiles/pyrx.dir/src/main.cpp.o -c /workspaces/mxnl/src/main.cpp",
+  "file": "/workspaces/mxnl/src/main.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build",
+  "command": "/usr/bin/gcc -Dpyrx_EXPORTS -I/workspaces/mxnl/mrx/RandomX/src -isystem /workspaces/mxnl/mrx/pybind11/include -isystem /home/codespace/.python/current/include/python3.10      -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native  -g -fPIC   -o CMakeFiles/pyrx.dir/src/rx-slow-hash.c.o   -c /workspaces/mxnl/src/rx-slow-hash.c",
+  "file": "/workspaces/mxnl/src/rx-slow-hash.c"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g   -std=gnu++11 -o CMakeFiles/perf-simulation.dir/src/tests/perf-simulation.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/tests/perf-simulation.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/tests/perf-simulation.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIE   -std=gnu++11 -o CMakeFiles/randomx-benchmark.dir/src/tests/benchmark.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/tests/benchmark.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/tests/benchmark.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIE   -std=gnu++11 -o CMakeFiles/randomx-benchmark.dir/src/tests/affinity.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/tests/affinity.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/tests/affinity.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g   -std=gnu++11 -o CMakeFiles/superscalar-stats.dir/src/tests/superscalar-stats.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/tests/superscalar-stats.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/tests/superscalar-stats.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIE   -std=gnu++11 -o CMakeFiles/randomx-codegen.dir/src/tests/code-generator.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/tests/code-generator.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/tests/code-generator.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIE   -std=gnu++11 -o CMakeFiles/randomx-tests.dir/src/tests/tests.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/tests/tests.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/tests/tests.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g   -std=gnu++11 -o CMakeFiles/jit-performance.dir/src/tests/jit-performance.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/tests/jit-performance.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/tests/jit-performance.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/aes_hash.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/aes_hash.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/aes_hash.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/gcc       -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native PARENT_SCOPE -g -fPIC   -o CMakeFiles/randomx.dir/src/argon2_ref.c.o   -c /workspaces/mxnl/mrx/RandomX/src/argon2_ref.c",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/argon2_ref.c"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/gcc       -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native PARENT_SCOPE -g -fPIC   -o CMakeFiles/randomx.dir/src/argon2_ssse3.c.o   -c /workspaces/mxnl/mrx/RandomX/src/argon2_ssse3.c",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/argon2_ssse3.c"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/gcc       -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native PARENT_SCOPE -g -fPIC   -o CMakeFiles/randomx.dir/src/argon2_avx2.c.o   -c /workspaces/mxnl/mrx/RandomX/src/argon2_avx2.c",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/argon2_avx2.c"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/bytecode_machine.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/bytecode_machine.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/bytecode_machine.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/cpu.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/cpu.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/cpu.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/dataset.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/dataset.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/dataset.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/soft_aes.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/soft_aes.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/soft_aes.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/virtual_memory.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/virtual_memory.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/virtual_memory.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/vm_interpreted.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/vm_interpreted.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/vm_interpreted.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/allocator.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/allocator.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/allocator.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/assembly_generator_x86.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/assembly_generator_x86.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/assembly_generator_x86.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/instruction.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/instruction.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/instruction.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/randomx.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/randomx.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/randomx.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/superscalar.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/superscalar.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/superscalar.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/vm_compiled.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/vm_compiled.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/vm_compiled.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/vm_interpreted_light.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/vm_interpreted_light.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/vm_interpreted_light.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/gcc       -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native PARENT_SCOPE -g -fPIC   -o CMakeFiles/randomx.dir/src/argon2_core.c.o   -c /workspaces/mxnl/mrx/RandomX/src/argon2_core.c",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/argon2_core.c"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/blake2_generator.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/blake2_generator.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/blake2_generator.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/instructions_portable.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/instructions_portable.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/instructions_portable.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/gcc       -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native PARENT_SCOPE -g -fPIC   -o CMakeFiles/randomx.dir/src/reciprocal.c.o   -c /workspaces/mxnl/mrx/RandomX/src/reciprocal.c",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/reciprocal.c"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/virtual_machine.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/virtual_machine.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/virtual_machine.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/vm_compiled_light.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/vm_compiled_light.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/vm_compiled_light.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/gcc       -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native PARENT_SCOPE -g -fPIC   -o CMakeFiles/randomx.dir/src/blake2/blake2b.c.o   -c /workspaces/mxnl/mrx/RandomX/src/blake2/blake2b.c",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/blake2/blake2b.c"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/g++      -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g -fPIC   -std=gnu++11 -o CMakeFiles/randomx.dir/src/jit_compiler_x86.cpp.o -c /workspaces/mxnl/mrx/RandomX/src/jit_compiler_x86.cpp",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/jit_compiler_x86.cpp"
+},
+{
+  "directory": "/workspaces/mxnl/build/mrx/RandomX",
+  "command": "/usr/bin/gcc       -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native PARENT_SCOPE -g -fPIC   -o CMakeFiles/randomx.dir/src/jit_compiler_x86_static.S.o   -c /workspaces/mxnl/mrx/RandomX/src/jit_compiler_x86_static.S",
+  "file": "/workspaces/mxnl/mrx/RandomX/src/jit_compiler_x86_static.S"
+}
+]

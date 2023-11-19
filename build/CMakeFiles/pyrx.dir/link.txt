@@ -1,0 +1,1 @@
+/usr/bin/g++ -fPIC    -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native  -g  -shared  -o pyrx.cpython-310-x86_64-linux-gnu.so CMakeFiles/pyrx.dir/src/main.cpp.o CMakeFiles/pyrx.dir/src/rx-slow-hash.c.o  mrx/RandomX/librandomx.a 

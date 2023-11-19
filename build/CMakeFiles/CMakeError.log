@@ -1,0 +1,95 @@
+Performing C++ SOURCE FILE Test _maes_cxx failed with the following output:
+Change Dir: /workspaces/mxnl/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_619e6/fast && /usr/bin/make -f CMakeFiles/cmTC_619e6.dir/build.make CMakeFiles/cmTC_619e6.dir/build
+make[1]: Entering directory '/workspaces/mxnl/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_619e6.dir/src.cxx.o
+/usr/bin/g++    -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -D_maes_cxx   -maes -std=gnu++11 -o CMakeFiles/cmTC_619e6.dir/src.cxx.o -c /workspaces/mxnl/build/CMakeFiles/CMakeTmp/src.cxx
+g++: error: PARENT_SCOPE: No such file or directory
+make[1]: *** [CMakeFiles/cmTC_619e6.dir/build.make:66: CMakeFiles/cmTC_619e6.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/workspaces/mxnl/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_619e6/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C SOURCE FILE Test _maes_c failed with the following output:
+Change Dir: /workspaces/mxnl/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7c58a/fast && /usr/bin/make -f CMakeFiles/cmTC_7c58a.dir/build.make CMakeFiles/cmTC_7c58a.dir/build
+make[1]: Entering directory '/workspaces/mxnl/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7c58a.dir/src.c.o
+/usr/bin/gcc   -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native PARENT_SCOPE -D_maes_c   -maes -o CMakeFiles/cmTC_7c58a.dir/src.c.o   -c /workspaces/mxnl/build/CMakeFiles/CMakeTmp/src.c
+gcc: error: PARENT_SCOPE: No such file or directory
+make[1]: *** [CMakeFiles/cmTC_7c58a.dir/build.make:66: CMakeFiles/cmTC_7c58a.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspaces/mxnl/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_7c58a/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test HAVE_SSSE3 failed with the following output:
+Change Dir: /workspaces/mxnl/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b5604/fast && /usr/bin/make -f CMakeFiles/cmTC_b5604.dir/build.make CMakeFiles/cmTC_b5604.dir/build
+make[1]: Entering directory '/workspaces/mxnl/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b5604.dir/src.c.o
+/usr/bin/gcc   -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native PARENT_SCOPE -DHAVE_SSSE3   -mssse3 -o CMakeFiles/cmTC_b5604.dir/src.c.o   -c /workspaces/mxnl/build/CMakeFiles/CMakeTmp/src.c
+gcc: error: PARENT_SCOPE: No such file or directory
+make[1]: *** [CMakeFiles/cmTC_b5604.dir/build.make:66: CMakeFiles/cmTC_b5604.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspaces/mxnl/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_b5604/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test HAVE_AVX2 failed with the following output:
+Change Dir: /workspaces/mxnl/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_20c41/fast && /usr/bin/make -f CMakeFiles/cmTC_20c41.dir/build.make CMakeFiles/cmTC_20c41.dir/build
+make[1]: Entering directory '/workspaces/mxnl/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_20c41.dir/src.c.o
+/usr/bin/gcc   -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native PARENT_SCOPE -DHAVE_AVX2   -mavx2 -o CMakeFiles/cmTC_20c41.dir/src.c.o   -c /workspaces/mxnl/build/CMakeFiles/CMakeTmp/src.c
+gcc: error: PARENT_SCOPE: No such file or directory
+make[1]: *** [CMakeFiles/cmTC_20c41.dir/build.make:66: CMakeFiles/cmTC_20c41.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspaces/mxnl/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_20c41/fast] Error 2
+
+
+Source file was:
+int main(void) { return 0; }
+Determining if the include file pthread.h exists failed with the following output:
+Change Dir: /workspaces/mxnl/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_d2fa6/fast && /usr/bin/make -f CMakeFiles/cmTC_d2fa6.dir/build.make CMakeFiles/cmTC_d2fa6.dir/build
+make[1]: Entering directory '/workspaces/mxnl/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d2fa6.dir/CheckIncludeFile.c.o
+/usr/bin/gcc   -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native PARENT_SCOPE    -o CMakeFiles/cmTC_d2fa6.dir/CheckIncludeFile.c.o   -c /workspaces/mxnl/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+gcc: error: PARENT_SCOPE: No such file or directory
+make[1]: *** [CMakeFiles/cmTC_d2fa6.dir/build.make:66: CMakeFiles/cmTC_d2fa6.dir/CheckIncludeFile.c.o] Error 1
+make[1]: Leaving directory '/workspaces/mxnl/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_d2fa6/fast] Error 2
+
+
+
+Performing C++ SOURCE FILE Test HAVE_CXX_ATOMICS failed with the following output:
+Change Dir: /workspaces/mxnl/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_7e931/fast && /usr/bin/make -f CMakeFiles/cmTC_7e931.dir/build.make CMakeFiles/cmTC_7e931.dir/build
+make[1]: Entering directory '/workspaces/mxnl/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_7e931.dir/src.cxx.o
+/usr/bin/g++    -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -DHAVE_CXX_ATOMICS   -std=gnu++11 -o CMakeFiles/cmTC_7e931.dir/src.cxx.o -c /workspaces/mxnl/build/CMakeFiles/CMakeTmp/src.cxx
+g++: error: PARENT_SCOPE: No such file or directory
+make[1]: *** [CMakeFiles/cmTC_7e931.dir/build.make:66: CMakeFiles/cmTC_7e931.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/workspaces/mxnl/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_7e931/fast] Error 2
+
+
+Source file was:
+
+#include <cstdint>
+#include <atomic>
+int main() {
+  std::atomic<uint64_t> a;
+  a.is_lock_free();
+}

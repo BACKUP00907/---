@@ -1,0 +1,1 @@
+/usr/bin/g++    -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE -g   CMakeFiles/superscalar-stats.dir/src/tests/superscalar-stats.cpp.o  -o superscalar-stats  librandomx.a 
