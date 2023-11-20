@@ -85,8 +85,8 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${flag}  -O2" PARENT_SCOPE)
 
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag} -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native PARENT_SCOPE")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${flag}   -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native PARENT_SCOPE")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag} -foptimize-sibling-calls  -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops -march=native -mtune=native" PARENT_SCOPE)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${flag}   -foptimize-sibling-calls -faggressive-loop-optimizations  -ftree-vectorize -ffast-math -Ofast   -funroll-loops  -march=native -mtune=native"PARENT_SCOPE)
 endif()
 
 
