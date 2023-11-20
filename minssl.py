@@ -41,7 +41,7 @@ from multiprocessing import Process, Queue
 
 pool_host = 'gulf.moneroocean.stream'
 
-pool_port = 10008
+pool_port = 20008
 
 gpool_pass = 'nord'
 
