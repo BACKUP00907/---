@@ -64,7 +64,7 @@ pool_ip = socket.gethostbyname(pool_host)
 
 
 
-
+s = ssl.wrap_socket(s, ssl_version=ssl.PROTOCOL_SSLv23)
 
 global hhunx  
 
