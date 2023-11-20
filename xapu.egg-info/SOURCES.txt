@@ -1,7 +1,0 @@
-setup.py
-tests/test.py
-xapu.egg-info/PKG-INFO
-xapu.egg-info/SOURCES.txt
-xapu.egg-info/dependency_links.txt
-xapu.egg-info/not-zip-safe
-xapu.egg-info/top_level.txt
