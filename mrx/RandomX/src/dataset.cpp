@@ -130,7 +130,7 @@ namespace randomx {
 		
 		
 		
-		std::cout << "init cache called"; 
+		
 
 		for (int i = 0; i < RANDOMX_CACHE_ACCESSES; ++i) {
 
