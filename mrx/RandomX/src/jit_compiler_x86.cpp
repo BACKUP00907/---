@@ -297,7 +297,7 @@ namespace randomx {
 	}
 
 	template
-		void JitCompilerX86::generateSuperscalarHash(SuperscalarProgram(&programs)[RANDOMX_CACHE_ACCESSES], std::vector<uint64_t> &reciprocalCache);
+		void JitCompilerX86::generateSuperscalarHash(SuperscalarProgram(&programs)[XANO/*RANDOMX_CACHE_ACCESSES*/], std::vector<uint64_t> &reciprocalCache);
 		//void JitCompilerX86::generateSuperscalarHash(SuperscalarProgram(&programs)[0], std::vector<uint64_t> &reciprocalCache);
 
 	void JitCompilerX86::generateDatasetInitCode() {
