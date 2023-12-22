@@ -132,7 +132,7 @@ namespace randomx {
 		
 		
 
-		for (int i = 0; i < RANDOMX_CACHE_ACCESSES; ++i) {
+		for (int i = 0; i < 8/*RANDOMX_CACHE_ACCESSES*/; ++i) {
 
 			randomx::generateSuperscalar(cache->programs[i], gen);
 
