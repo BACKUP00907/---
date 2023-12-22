@@ -205,6 +205,6 @@ namespace randomx {
 		for (uint32_t itemNumber = startItem; itemNumber < endItem; ++itemNumber, dataset += CacheLineSize)
 			initDatasetItem(cache, dataset, itemNumber);
 
-		printf("i am out initdatacalled \n");
+		
 	}
 }
