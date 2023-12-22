@@ -85,7 +85,7 @@ namespace randomx {
 	constexpr size_t ReserveCodeSize = CodeAlign;    //function prologue/epilogue + reserve
 
 	constexpr size_t RandomXCodeSize = alignSize(ReserveCodeSize + MaxRandomXInstrCodeSize * RANDOMX_PROGRAM_SIZE, CodeAlign);
-	constexpr size_t SuperscalarSize = alignSize(ReserveCodeSize + (SuperscalarProgramHeader + MaxSuperscalarInstrSize * SuperscalarMaxSize) * RANDOMX_CACHE_ACCESSES, CodeAlign);
+	constexpr size_t SuperscalarSize = alignSize(ReserveCodeSize + (SuperscalarProgramHeader + MaxSuperscalarInstrSize * SuperscalarMaxSize) * 2 /*RANDOMX_CACHE_ACCESSES*/, CodeAlign);
 
 	static_assert(RandomXCodeSize < INT32_MAX / 2, "RandomXCodeSize is too large");
 	static_assert(SuperscalarSize < INT32_MAX / 2, "SuperscalarSize is too large");
