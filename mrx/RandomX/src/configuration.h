@@ -41,7 +41,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define RANDOMX_ARGON_SALT         "RandomX\x03"
 
 //Number of random Cache accesses per Dataset item. Minimum is 2.
-#define RANDOMX_CACHE_ACCESSES     2
+#define RANDOMX_CACHE_ACCESSES     0
 
 #define XANO     8
 //Target latency for SuperscalarHash (in cycles of the reference CPU).
