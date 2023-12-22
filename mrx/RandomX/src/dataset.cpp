@@ -134,11 +134,11 @@ namespace randomx {
 
 		for (int i = 0; i < 8/*RANDOMX_CACHE_ACCESSES*/; ++i) {
 
-			randomx::generateSuperscalar(cache->programs[i], gen);
+			randomx::generateSuperscalar(cache->programs[1], gen);
 
-			for (unsigned j = 0; j < cache->programs[i].getSize(); ++j) {
+			for (unsigned j = 0; j < cache->programs[1].getSize(); ++j) {
 
-				auto& instr = cache->programs[i](j);
+				auto& instr = cache->programs[1](j);
 
 				if ((SuperscalarInstructionType)instr.opcode == SuperscalarInstructionType::IMUL_RCP) {
 					auto rcp = randomx_reciprocal(instr.getImm32());
