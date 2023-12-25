@@ -14,7 +14,7 @@ namespace py = pybind11;
 using namespace std::chrono;
 
 
-py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_hash, const uint64_t height, uint64_t turget , unsigned long int  hohu , int fasnt)
+py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_hash, const uint64_t height, uint64_t turget , unsigned long int  hohu , int fasnt, int skipstepl)
 {
     if (fasnt==0){
             unsigned long long int tash = 0;
@@ -93,7 +93,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
                 
                 }
                 memset(&input[0], 0, 250);
-                nonce++;
+                nonce = nonce + skipstepl;
             }
     }
 
@@ -174,7 +174,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
                 
                 }
                 memset(&input[0], 0, 250);
-                nonce++;
+                nonce = nonce + skipstepl;
             }
     }
             
