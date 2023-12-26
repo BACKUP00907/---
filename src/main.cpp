@@ -47,7 +47,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
             std::stringstream lks;
             
             std::ofstream nom;
-            nom.open("non.txt");
+            
         
             char or64[8];
         
@@ -86,6 +86,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
                     auto ctim =std::chrono::duration_cast<std::chrono::seconds>(end-start);
                     unsigned long long int kdj = (tash /ctim.count() );
                     std::cout << "\n" << "HASHRATE: " <<  kdj << "\n";
+                    nom.open("non.txt");
                     nom << nonce ;
                     nom.close();
                     
@@ -128,7 +129,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
             std::stringstream lks;
             
             std::ofstream nom;
-            nom.open("non.txt");
+            
         
             char or64[8];
         
@@ -167,6 +168,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
                     auto ctim =std::chrono::duration_cast<std::chrono::seconds>(end-start);
                     unsigned long long int kdj = (tash /ctim.count() );
                     std::cout << "\n" << "HASHRATE: " <<  kdj << "\n";
+                    nom.open("non.txt");
                     nom << nonce ;
                     nom.close();
                     
