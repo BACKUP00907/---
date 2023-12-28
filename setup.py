@@ -58,7 +58,7 @@ class CMakeBuild(build_ext):
 
 setup(
     name='xapu',
-    version='0.0.1',
+    version='1.0.1.2',
     author='vyomw',
     author_email='vyomwankhede@gmail.com',
     description='Python RandomX hashing module',
