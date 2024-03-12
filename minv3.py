@@ -50,7 +50,7 @@ wallet_address = '49FrBm432j9fg33N8PrwSiSig7aTrxZ1wY4eELssmkmeESaYzk2fPkvfN7Kj4N
 
 nicehash = False
 
-
+branches = 4
 
 
 
@@ -64,6 +64,7 @@ pool_ip = socket.gethostbyname(pool_host)
 
 
 
+s.connect((pool_ip, pool_port))
 
 
 global hhunx  
@@ -80,7 +81,7 @@ hhunx =-1
 
 def controller(q,s,t,k):
 
-    s.connect((pool_ip, pool_port))
+    
 
     try:
 
@@ -108,9 +109,9 @@ def controller(q,s,t,k):
 
         }
 
-        print('Logging into pool: {}:{}'.format(pool_host, pool_port))
+        #print('Logging into pool: {}:{}'.format(pool_host, pool_port))
 
-        print('Using NiceHash mode: {}'.format(nicehash))
+        #print('Using NiceHash mode: {}'.format(nicehash))
 
         s.sendall(str(json.dumps(login)+'\n').encode('utf-8'))
 
@@ -154,7 +155,7 @@ def controller(q,s,t,k):
 
                 if error:
 
-                    print('Error: {}'.format(error))
+                    #print('Error: {}'.format(error))
 
                     
 
@@ -190,7 +191,7 @@ def controller(q,s,t,k):
 
                     wo = Process(target=worker, args=(q, s))
 
-                    wo.daemon = True
+                    #wo.daemon = True
 
                     wo.start()
 
@@ -232,7 +233,7 @@ def worker(q, s):
 
         hash_count = 0
 
-
+        subcounter = 0
 
         while 1:
 
@@ -242,7 +243,7 @@ def worker(q, s):
 
             login_id = job.get('id')
 
-            print('Login ID: {}'.format(login_id))
+            #print('Login ID: {}'.format(login_id))
 
 
 
@@ -266,7 +267,7 @@ def worker(q, s):
 
             seed_hash = binascii.unhexlify(job.get('seed_hash'))
 
-            print('New job with target: {}, RandomX, height: {}'.format(target, height))
+            #print('New job with target: {}, RandomX, height: {}'.format(target, height))
 
             
 
@@ -284,14 +285,14 @@ def worker(q, s):
 
             xbin = binascii.unhexlify(blob)
 
-            print(len(blob))
+            #print(len(blob))
 
             fbin = struct.pack('39B', *bytearray(xbin[:39]))
 
             lbin = struct.pack('{}B'.format(len(xbin)-43), *bytearray(xbin[43:]))
 
 
-
+            
 
 
             while 1:
@@ -302,8 +303,8 @@ def worker(q, s):
 
             
 
-                hash = pyrx.get_rx_hash(fbin,lbin, seed_hash, height,target,nonce,0)
-
+                hash = pyrx.get_rx_hash(fbin,lbin, seed_hash, height,target,nonce,0,1)
+            
             
 
             
@@ -342,16 +343,16 @@ def worker(q, s):
 
                 }
 
-                print('Submitting hash: {}'.format(hex_hash))
+                #print('Submitting hash: {}'.format(hex_hash))
 
             
 
                 
 
                 s.sendall(str(json.dumps(submit)+'\n').encode('utf-8'))
-
+                subcounter = subcounter + 1 
                 select.select([s], [], [], 3)
-
+                print(subcounter)
                  
 
                 
@@ -390,12 +391,49 @@ def worker(q, s):
 
     
 
+def mulNhandler(fbin,lbin,seed_hash,height,target,nonce,brancho):
+    siglatch = 0
+    noncein = [0,0,0,0,0,0,0,0]
+    procce = [0,0,0,0]
+    buffro =""
+    k=0
+
+    hq = Queue()
+    hs = Queue()
+    while k < brancho:
+        noncein[k] = nonce + k
+        print(noncein[k])
+        k= k + 1
+    
+    k=0
+    while k < brancho:
+        #execbran(fbin,lbin,seed_hash,height,target,noncein[k],brancho,buffro, siglatch) 
+        procce[k] = Process(target=execbran, args=(fbin,lbin,seed_hash,height,target,noncein[k],brancho,hq, hs))
+        
+        k = k + 1
+    k=0
+    while k < brancho:
+        procce[k].start()
+        k = k + 1
+    
+    while 1==1:
+        
+        if hs.get() > 0:
+            print("sig recved")
+            k=0
+            while k < brancho:
+                if procce[k].is_alive() == True :
+                    procce[k].kill()
+                procce[k].join()
+                k = k + 1
+                
+            return hq.get()
 
 
 
-
-            
-
+def execbran(fbin,lbin,seed_hash,height,target,nonce,branches,sbuffr, sq ):
+    sbuffr.put(pyrx.get_rx_hash(fbin,lbin, seed_hash, height,target,nonce,0,branches))
+    sq.put(5)    
         
 
         
@@ -431,7 +469,7 @@ if __name__ == '__main__':
         pool_port = int(args.port)
 
     
-
+    
     
 
     controller(q, s,1,hhunx)
