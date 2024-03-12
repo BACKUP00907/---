@@ -68,7 +68,7 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
                 
                 
             
-                rx_slow_hashL(height, seed_height, seed_hash.data(), &input[0], xbl, &output[0], 1, 0);
+                rx_slow_hashL(height, seed_height, seed_hash.data(), &input[0], xbl, &output[0], 3, 0);
                 
                 tash++;
                 
