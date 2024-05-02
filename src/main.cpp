@@ -151,7 +151,8 @@ py::bytes get_rx_hash( std::string fblob ,std::string lblob , std::string seed_h
                 
             
                 rx_slow_hash(height, seed_height, seed_hash.data(), &input[0], xbl, &output[0], 1, 0);
-                
+                std::cout << "\n" << "NONCE:" <<  nonce << "\n";
+                std::cout << "\n" << "HASH:" <<  output.data() << "\n";
                 tash++;
                 
                 memcpy(or64,output.substr(24).data(),8);
