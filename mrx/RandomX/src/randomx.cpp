@@ -356,9 +356,13 @@ extern "C" {
 		fenv_t fpstate;
 		fegetenv(&fpstate);
 		alignas(16) uint64_t tempHash[8];
+
 		int blakeResult = blake2b(tempHash, sizeof(tempHash), input, inputSize, nullptr, 0);
+
 		assert(blakeResult == 0);
+
 		machine->initScratchpad(&tempHash);
+		
 		machine->resetRoundingMode();
 		
 		for (int chain = 0; chain < RANDOMX_PROGRAM_COUNT - 1; ++chain) {
