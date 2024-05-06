@@ -38,7 +38,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "commanstro.h"
 
-#include <fstream>
+#include <stdio.h>
 
 randomx_vm::~randomx_vm() {
 

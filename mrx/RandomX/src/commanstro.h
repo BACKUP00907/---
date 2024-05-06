@@ -1,5 +1,5 @@
-#ifndef COMMANSTRO_H
-#define COMMANSTRO_H
+#ifndef COMMANSTRO_HPP
+#define COMMANSTRO_HPP
 
 inline FILE * 	proghashj;
 inline FILE * 	progj;
