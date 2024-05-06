@@ -120,10 +120,10 @@ namespace randomx {
 
 	template<class Allocator, bool softAes>
 	void VmBase<Allocator, softAes>::getFinalResult(void* out, size_t outSize) {
-		FILE * 	regas;
-		regas = fopen("rega.txt","wb");
-		fwrite(&reg.a,64,1,regas);
-		fclose(regas);
+		FILE * 	regaskom;
+		regaskom = fopen("rega.txt","wb");
+		fwrite(&reg.a,8,4,regaskom);
+		fclose(regaskom);
 		
 		hashAes1Rx4<softAes>(scratchpad, ScratchpadSize, &reg.a);
 		blake2b(out, outSize, &reg, sizeof(RegisterFile), nullptr, 0);
