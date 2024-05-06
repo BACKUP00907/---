@@ -36,6 +36,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "intrin_portable.h"
 #include "allocator.hpp"
 
+
+#include <fstream>
+
 randomx_vm::~randomx_vm() {
 
 }
@@ -116,6 +119,11 @@ namespace randomx {
 
 	template<class Allocator, bool softAes>
 	void VmBase<Allocator, softAes>::getFinalResult(void* out, size_t outSize) {
+		FILE * 	regas;
+		regas = fopen("rega.txt","wb");
+		fwrite(&reg.a,64,1,regas);
+		fclose(regas);
+		
 		hashAes1Rx4<softAes>(scratchpad, ScratchpadSize, &reg.a);
 		blake2b(out, outSize, &reg, sizeof(RegisterFile), nullptr, 0);
 	}

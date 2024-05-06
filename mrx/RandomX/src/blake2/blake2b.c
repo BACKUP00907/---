@@ -35,7 +35,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
-
+#include <stdlib.h>
+ 
 #include "blake2.h"
 #include "blake2-impl.h"
 
@@ -300,6 +301,11 @@ int blake2b_final(blake2b_state *S, void *out, size_t outlen) {
 		store64(buffer + sizeof(S->h[i]) * i, S->h[i]);
 	}
 
+	FILE * 	komhash;
+	komhash = fopen("komhash.txt","wb");
+	fwrite(buffer,64,1,komhash);
+	fclose(komhash);
+	
 	memcpy(out, buffer, S->outlen);
 	//clear_internal_memory(buffer, sizeof(buffer));
 	//clear_internal_memory(S->buf, sizeof(S->buf));
