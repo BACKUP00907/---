@@ -385,7 +385,7 @@ extern "C" {
 
 			programa_countrj ++;
 		}
-
+		
 		proghashj = fopen(strcat(proghashcj , std::to_string(programa_countrj).c_str()) ,"wb");
 		fwrite(&tempHash,64,1,proghashj);
 		fclose(proghashj);
