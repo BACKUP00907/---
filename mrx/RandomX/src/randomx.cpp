@@ -380,7 +380,6 @@ extern "C" {
 			programhashi.write((char*)&tempHash, 64);
 			programhashi.flush();
 			programhashi.close();
-			std::cout << "first part";
 			machine->run(&tempHash);
 			blakeResult = blake2b(tempHash, sizeof(tempHash), machine->getRegisterFile(), sizeof(randomx::RegisterFile), nullptr, 0);
 			assert(blakeResult == 0);
