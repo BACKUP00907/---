@@ -38,7 +38,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <limits>
 #include <cfenv>
 
-#include "commanstro.hpp"
+#include "commanstro.h"
 
 extern "C" {
 
