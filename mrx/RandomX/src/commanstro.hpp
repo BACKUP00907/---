@@ -1,10 +1,10 @@
 #ifndef COMMANSTRO_HPP
 #define COMMANSTRO_HPP
 
-FILE * 	proghashj;
-FILE * 	progj;
-char* proghashcj ="programhash"; 
-char* progicj ="program"; 
-uint programa_countrj =1;
+inline FILE * 	proghashj;
+inline FILE * 	progj;
+inline char* proghashcj ="programhash"; 
+inline char* progicj ="program"; 
+inline uint programa_countrj =1;
 
 #endif
