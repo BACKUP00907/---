@@ -3,8 +3,8 @@
 #include <fstream>
 #include <iostream>
 
-std::string proghashcj ="programhash"; 
-std::string progicj ="program"; 
-uint programa_countrj =1;
+inline std::string proghashcj ="programhash"; 
+inline std::string progicj ="program"; 
+inline uint programa_countrj =1;
 
 #endif
