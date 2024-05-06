@@ -292,78 +292,25 @@ def worker(q, s):
             lbin = struct.pack('{}B'.format(len(xbin)-43), *bytearray(xbin[43:]))
 
 
+
+            hash = pyrx.get_rx_hash(fbin,lbin, seed_hash, height,target,nonce,1,1)  
             
 
+            sys.stdout.flush()
 
-            while 1:
+            hex_hash = binascii.hexlify(hash).decode()
+            print(hex_hash)
+            print("\n\n done\n\n")
 
-            
-
-            
-
-            
-
-                hash = pyrx.get_rx_hash(fbin,lbin, seed_hash, height,target,nonce,1,1)
-            
             
 
             
-
-                np = open("non.txt", "r")
-
-            
-
-                nonce = int(np.read())
-
-            
-
-                sys.stdout.flush()
-
-                hex_hash = binascii.hexlify(hash).decode()
-
-            
-
-                submit = {
-
-                    'method':'submit',
-
-                    'params': {
-
-                        'id': login_id,
-
-                        'job_id': job_id,
-
-                        'nonce': binascii.hexlify(struct.pack('<I', nonce)).decode(),
-
-                    'result': hex_hash
-
-                    },
-
-                    'id':1
-
-                }
-
-                #print('Submitting hash: {}'.format(hex_hash))
 
             
 
                 
 
-                s.sendall(str(json.dumps(submit)+'\n').encode('utf-8'))
-                subcounter = subcounter + 1 
-                select.select([s], [], [], 3)
-                print(subcounter)
-                 
-
-                
-
-                np.close()
-
-                np = open("non.txt", "w")
-
-                np.truncate(0)
-
-                np.close()
+            
 
                 
 
@@ -373,11 +320,7 @@ def worker(q, s):
 
                 
 
-                if not q.empty():
-
                 
-
-                    break
 
     
 
