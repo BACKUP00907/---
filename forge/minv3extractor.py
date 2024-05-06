@@ -324,7 +324,8 @@ def worker(q, s):
 
     
 
-
+    except:
+        print("done")
 
 
 
