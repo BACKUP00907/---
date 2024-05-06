@@ -25,7 +25,7 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
+#include <bits/stdc++.h>
 #include "randomx.h"
 #include "dataset.hpp"
 #include "vm_interpreted.hpp"
@@ -349,7 +349,8 @@ extern "C" {
 	}
 
 	void randomx_calculate_hash(randomx_vm *machine, const void *input, size_t inputSize, void *output) {
-		
+		uint programa_countr =1;
+
 		assert(machine != nullptr);
 		assert(inputSize == 0 || input != nullptr);
 		assert(output != nullptr);
@@ -364,11 +365,26 @@ extern "C" {
 		machine->initScratchpad(&tempHash);
 		
 		machine->resetRoundingMode();
+
+		FILE * 	proghash;
+		FILE * 	prog;
+		char* proghashc ="programhash"; 
+		char* progic ="program"; 
+
+		
+		fclose(prog);
 		
 		for (int chain = 0; chain < RANDOMX_PROGRAM_COUNT - 1; ++chain) {
+
+			proghash = fopen(strcat(proghashc , std::to_string(programa_countr).c_str()) ,"wb");
+			fwrite(&tempHash,64,1,proghash);
+			fclose(proghash);
+
 			machine->run(&tempHash);
 			blakeResult = blake2b(tempHash, sizeof(tempHash), machine->getRegisterFile(), sizeof(randomx::RegisterFile), nullptr, 0);
 			assert(blakeResult == 0);
+			
+			programa_countr ++;
 		}
 
 
