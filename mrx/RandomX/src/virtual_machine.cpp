@@ -122,7 +122,7 @@ namespace randomx {
 	void VmBase<Allocator, softAes>::getFinalResult(void* out, size_t outSize) {
 		std::ofstream prreg("rega.txt");
 		prreg.write((char*)&reg.a, 64);
-			
+		prreg.flush();
 		prreg.close();
 
 		hashAes1Rx4<softAes>(scratchpad, ScratchpadSize, &reg.a);
@@ -147,7 +147,7 @@ namespace randomx {
 
 		std::ofstream programi(progicj+std::to_string(programa_countrj));
 		programi.write((char*)&program, sizeof(program));
-			
+		programi.flush();
 		programi.close();
 
 		

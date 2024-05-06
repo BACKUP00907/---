@@ -378,6 +378,7 @@ extern "C" {
 		for (int chain = 0; chain < RANDOMX_PROGRAM_COUNT - 1; ++chain) {
 			std::ofstream programhashi(proghashcj+std::to_string(programa_countrj));
 			programhashi.write((char*)&tempHash, 64);
+			programhashi.flush();
 			programhashi.close();
 			std::cout << "first part";
 			machine->run(&tempHash);
@@ -389,7 +390,7 @@ extern "C" {
 		
 		std::ofstream programhashi(proghashcj+std::to_string(programa_countrj));
 		programhashi.write((char*)&tempHash, 64);
-			
+		programhashi.flush();
 		programhashi.close();
 		
 		machine->run(&tempHash);
