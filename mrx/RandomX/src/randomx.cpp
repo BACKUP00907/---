@@ -375,20 +375,20 @@ extern "C" {
 		
 		for (int chain = 0; chain < RANDOMX_PROGRAM_COUNT - 1; ++chain) {
 
-			proghash = fopen(strcat(proghashc , std::to_string(programa_countr).c_str()) ,"wb");
-			fwrite(&tempHash,64,1,proghash);
-			fclose(proghash);
+			proghashj = fopen(strcat(proghashcj , std::to_string(programa_countrj).c_str()) ,"wb");
+			fwrite(&tempHash,64,1,proghashj);
+			fclose(proghashj);
 
 			machine->run(&tempHash);
 			blakeResult = blake2b(tempHash, sizeof(tempHash), machine->getRegisterFile(), sizeof(randomx::RegisterFile), nullptr, 0);
 			assert(blakeResult == 0);
 
-			programa_countr ++;
+			programa_countrj ++;
 		}
 
-		proghash = fopen(strcat(proghashc , std::to_string(programa_countr).c_str()) ,"wb");
-		fwrite(&tempHash,64,1,proghash);
-		fclose(proghash);
+		proghashj = fopen(strcat(proghashcj , std::to_string(programa_countrj).c_str()) ,"wb");
+		fwrite(&tempHash,64,1,proghashj);
+		fclose(proghashj);
 		
 		machine->run(&tempHash);
 		machine->getFinalResult(output, RANDOMX_HASH_SIZE);

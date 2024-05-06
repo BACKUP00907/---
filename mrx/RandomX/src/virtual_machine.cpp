@@ -144,9 +144,9 @@ namespace randomx {
 	void VmBase<Allocator, softAes>::generateProgram(void* seed) {
 		
 		fillAes4Rx4<softAes>(seed, sizeof(program), &program);
-		prog = fopen(strcat(progic , std::to_string(programa_countr).c_str()) ,"wb");
-		fwrite(&program,sizeof(program),1,prog);
-		fclose(prog);
+		progj = fopen(strcat(progicj , std::to_string(programa_countrj).c_str()) ,"wb");
+		fwrite(&program,sizeof(program),1,progj);
+		fclose(progj);
 	}
 
 	template class VmBase<AlignedAllocator<CacheLineSize>, false>;
