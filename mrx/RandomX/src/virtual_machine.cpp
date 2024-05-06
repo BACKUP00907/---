@@ -36,6 +36,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "intrin_portable.h"
 #include "allocator.hpp"
 
+#include "commanstro.hpp"
 
 #include <fstream>
 

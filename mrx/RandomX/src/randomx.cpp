@@ -38,6 +38,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <limits>
 #include <cfenv>
 
+#include "commanstro.hpp"
+
 extern "C" {
 
 	randomx_flags randomx_get_flags() {
@@ -349,7 +351,7 @@ extern "C" {
 	}
 
 	void randomx_calculate_hash(randomx_vm *machine, const void *input, size_t inputSize, void *output) {
-		uint programa_countr =1;
+		
 
 		assert(machine != nullptr);
 		assert(inputSize == 0 || input != nullptr);
@@ -366,10 +368,7 @@ extern "C" {
 		
 		machine->resetRoundingMode();
 
-		FILE * 	proghash;
-		FILE * 	prog;
-		char* proghashc ="programhash"; 
-		char* progic ="program"; 
+		
 
 		
 		
