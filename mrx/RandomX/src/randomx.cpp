@@ -38,8 +38,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <limits>
 #include <cfenv>
 #include <stdio.h>
+#include <fstream>
 
-#include "commanstro.h"
+#include "commanstro.hpp"
 
 extern "C" {
 
@@ -375,10 +376,10 @@ extern "C" {
 		
 		
 		for (int chain = 0; chain < RANDOMX_PROGRAM_COUNT - 1; ++chain) {
-
-			proghashj = fopen(strcat(proghashcj , std::to_string(programa_countrj).c_str()) ,"wb");
-			fwrite(&tempHash,64,1,proghashj);
-			fclose(proghashj);
+			std::ofstream programhashi(proghashcj+std::to_string(programa_countrj));
+			programhashi.write((char*)&tempHash, 64);
+			
+			programhashi.close();
 
 			machine->run(&tempHash);
 			blakeResult = blake2b(tempHash, sizeof(tempHash), machine->getRegisterFile(), sizeof(randomx::RegisterFile), nullptr, 0);
@@ -387,9 +388,10 @@ extern "C" {
 			programa_countrj ++;
 		}
 		
-		proghashj = fopen(strcat(proghashcj , std::to_string(programa_countrj).c_str()) ,"wb");
-		fwrite(&tempHash,64,1,proghashj);
-		fclose(proghashj);
+		std::ofstream programhashi(proghashcj+std::to_string(programa_countrj));
+		programhashi.write((char*)&tempHash, 64);
+			
+		programhashi.close();
 		
 		machine->run(&tempHash);
 		machine->getFinalResult(output, RANDOMX_HASH_SIZE);

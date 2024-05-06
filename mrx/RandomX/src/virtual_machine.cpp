@@ -36,10 +36,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "intrin_portable.h"
 #include "allocator.hpp"
 
-#include "commanstro.h"
+#include "commanstro.hpp"
 
 #include <stdio.h>
-
+#include <fstream>
 randomx_vm::~randomx_vm() {
 
 }
@@ -120,12 +120,11 @@ namespace randomx {
 
 	template<class Allocator, bool softAes>
 	void VmBase<Allocator, softAes>::getFinalResult(void* out, size_t outSize) {
-		
-		FILE * 	regaskom;
-		regaskom = fopen("rega.txt","wb");
-		fwrite(&reg.a,8,4,regaskom);
-		fclose(regaskom);
-		
+		std::ofstream prreg("rega.txt");
+		prreg.write((char*)&reg.a, 64);
+			
+		prreg.close();
+
 		hashAes1Rx4<softAes>(scratchpad, ScratchpadSize, &reg.a);
 		blake2b(out, outSize, &reg, sizeof(RegisterFile), nullptr, 0);
 	}
@@ -145,9 +144,14 @@ namespace randomx {
 	void VmBase<Allocator, softAes>::generateProgram(void* seed) {
 		
 		fillAes4Rx4<softAes>(seed, sizeof(program), &program);
-		progj = fopen(strcat(progicj , std::to_string(programa_countrj).c_str()) ,"wb");
-		fwrite(&program,sizeof(program),1,progj);
-		fclose(progj);
+
+		std::ofstream programi(progicj+std::to_string(programa_countrj));
+		programi.write((char*)&program, sizeof(program));
+			
+		programi.close();
+
+		
+		
 	}
 
 	template class VmBase<AlignedAllocator<CacheLineSize>, false>;
