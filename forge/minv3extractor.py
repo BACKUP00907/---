@@ -324,9 +324,7 @@ def worker(q, s):
 
     
 
-    except:
 
-        worker(q,s)
 
 
 
