@@ -121,7 +121,7 @@ namespace randomx {
 	template<class Allocator, bool softAes>
 	void VmBase<Allocator, softAes>::getFinalResult(void* out, size_t outSize) {
 		std::ofstream prreg("rega.txt");
-		prreg.write((char*)reg.a, 64);
+		prreg.write((char*)&reg.a, 64);
 			
 		prreg.close();
 
