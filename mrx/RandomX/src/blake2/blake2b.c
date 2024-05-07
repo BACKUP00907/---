@@ -307,8 +307,7 @@ int blake2b_final(blake2b_state *S, void *out, size_t outlen) {
 	return 0;
 }
 
-int blake2b(void *out, size_t outlen, const void *in, size_t inlen,
-	const void *key, size_t keylen) {
+int blake2b(void *out, size_t outlen, const void *in, size_t inlen, const void *key, size_t keylen) {
 	blake2b_state S;
 	int ret = -1;
 

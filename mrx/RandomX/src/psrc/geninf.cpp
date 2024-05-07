@@ -2,6 +2,8 @@ using namespace std;
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "blake2.h"
+#include "blake2-impl.h"
 
 int blake2b(void *out, size_t outlen, const void *in, size_t inlen, const void *key, size_t keylen) {
 	blake2b_state S;
@@ -49,6 +51,7 @@ fail:
 
 
 int inblake(void * output, int dop){
+    // basic init
     void* koutput = malloc(64);
     memcpy(koutput,output,sizeof(output));
     if(dop==0){
@@ -60,7 +63,7 @@ int inblake(void * output, int dop){
         memcpy(koutput + 32,koml +32,32);
     }
 
-    
+    //blake inverse function starts
     
     
 
