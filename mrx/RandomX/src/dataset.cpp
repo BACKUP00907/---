@@ -125,27 +125,16 @@ namespace randomx {
 		randomx_argon2_fill_memory_blocks(&instance);
 
 		cache->reciprocalCache.clear();
-
 		randomx::Blake2Generator gen(key, keySize);
-		
-		
-		
-		
-
 		for (int i = 0; i < RANDOMX_CACHE_ACCESSES; ++i) {
-
 			randomx::generateSuperscalar(cache->programs[i], gen);
-
 			for (unsigned j = 0; j < cache->programs[i].getSize(); ++j) {
-
 				auto& instr = cache->programs[i](j);
-
 				if ((SuperscalarInstructionType)instr.opcode == SuperscalarInstructionType::IMUL_RCP) {
 					auto rcp = randomx_reciprocal(instr.getImm32());
 					instr.setImm32(cache->reciprocalCache.size());
 					cache->reciprocalCache.push_back(rcp);
 				}
-			
 			}
 		}
 	}
@@ -167,11 +156,9 @@ namespace randomx {
 	constexpr uint64_t superscalarAdd6 = 3398623926847679864ULL;
 	constexpr uint64_t superscalarAdd7 = 9549104520008361294ULL;
 
-	constexpr uint32_t mixnmask = CacheSize / CacheLineSize - 1;
-
 	static inline uint8_t* getMixBlock(uint64_t registerValue, uint8_t *memory) {
-		
-		return memory + (registerValue & mixnmask) * CacheLineSize;
+		constexpr uint32_t mask = CacheSize / CacheLineSize - 1;
+		return memory + (registerValue & mask) * CacheLineSize;
 	}
 
 	void initDatasetItem(randomx_cache* cache, uint8_t* out, uint64_t itemNumber) {
@@ -186,25 +173,24 @@ namespace randomx {
 		rl[5] = rl[0] ^ superscalarAdd5;
 		rl[6] = rl[0] ^ superscalarAdd6;
 		rl[7] = rl[0] ^ superscalarAdd7;
-		
-		
-		
-		mixBlock = getMixBlock(registerValue, cache->memory);
+		for (unsigned i = 0; i < RANDOMX_CACHE_ACCESSES; ++i) {
+			mixBlock = getMixBlock(registerValue, cache->memory);
+			rx_prefetch_nta(mixBlock);
+			SuperscalarProgram& prog = cache->programs[i];
 
+			executeSuperscalar(rl, prog, &cache->reciprocalCache);
 
-		for (unsigned q = 0; q < 8; ++q)
-			rl[q] ^= load64_native(mixBlock + 8 * q);
+			for (unsigned q = 0; q < 8; ++q)
+				rl[q] ^= load64_native(mixBlock + 8 * q);
 
-		
+			registerValue = rl[prog.getAddressRegister()];
+		}
+
 		memcpy(out, &rl, CacheLineSize);
-		
-		
 	}
 
 	void initDataset(randomx_cache* cache, uint8_t* dataset, uint32_t startItem, uint32_t endItem) {
 		for (uint32_t itemNumber = startItem; itemNumber < endItem; ++itemNumber, dataset += CacheLineSize)
 			initDatasetItem(cache, dataset, itemNumber);
-
-		
 	}
 }
