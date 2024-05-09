@@ -115,17 +115,20 @@ void inblakefinal (blake2b_state * S,void *in, size_t inlen){
 
 void inblakecompress(blake2b_state *S , uint8_t *block){
 	// l is a ;m is b; n is c ; o is d 
-#define inG( i, a, b, c, d, l, m, n, o)                                                    \
+#define inG(r, i, a, b, c, d, l, m, n, o)                                                    \
     do {       \
 		uint64_t ba =0;\
-		inxor(inrotr64(b, 63),b,c); \
+		b = inrotr64(b, 63) ^ c ; \
 		c = c - d;   \
-		inxor(inrotr64(d, 16),d,ba);    \
-		inxor(inrotr64(b, 24),b,c);		\
+		d= inrotr64(d, 16)^ l;    \
+		m[blake2b_sigma[r][2 * i + 1]] = l-b; \ // add la too \
+		b = inrotr64(b, 24) ^ c;		\
 		c=c-d	;\
-		inxor(inrotr64(d, 32),d,a);	\
-		m[blake2b_sigma[r][2 * i + 0]]  = ((a - b -l)<0) ? ((a - b -l) + UINT64_MAX +1): (a - b -l) \                        
-        m[blake2b_sigma[r][2 * i + 1]]  = ((ba - b -a)<0) ? ((ba - b -a) + UINT64_MAX +1): (ba - b -a) ;  \
+		ba = inrotr64(d, 32)^ o);	\
+		m[blake2b_sigma[r][2 * i + 1]] -ba ;								\
+		a=ba-b;												\
+		m[blake2b_sigma[r][2 * i + 0]] = (((a & 0x1) ==0 )? a/2: ((a-1)/2));	     \
+        a = (((a & 0x1) ==0 )? a/2: ((a-1)/2)+1);  \
     } while ((void)0, 0)
 	
 #define ikROUND()                                                               \
