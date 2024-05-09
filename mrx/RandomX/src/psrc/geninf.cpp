@@ -1,10 +1,10 @@
-using namespace std;
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "blake2.h"
 #include "blake2-impl.h"
 #include <limits.h>
+using namespace std;
 static const uint64_t blake2b_IV[8] = {
 	UINT64_C(0x6a09e667f3bcc908), UINT64_C(0xbb67ae8584caa73b),
 	UINT64_C(0x3c6ef372fe94f82b), UINT64_C(0xa54ff53a5f1d36f1),
@@ -125,7 +125,7 @@ void inblakecompress(blake2b_state *S , uint8_t *block){
 		inxor(inrotr64(b, 24),b,c);		\
 		c=c-d	;\
 		inxor(inrotr64(d, 32),d,a);	\
-		m[blake2b_sigma[r][2 * i + 0]]  = ((a - b -l)<0) ? ((a - b -l) + UINT64_MAX +1): (a - b -l) \                         
+		m[blake2b_sigma[r][2 * i + 0]]  = ((a - b -l)<0) ? ((a - b -l) + UINT64_MAX +1): (a - b -l) \                        
                                                          \
         m[blake2b_sigma[r][2 * i + 1]]  = ((ba - b -a)<0) ? ((ba - b -a) + UINT64_MAX +1): (ba - b -a) ;                                                            \
     } while ((void)0, 0)
