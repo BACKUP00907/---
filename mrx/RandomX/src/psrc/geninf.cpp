@@ -4,7 +4,7 @@ using namespace std;
 #include <string.h>
 #include "blake2.h"
 #include "blake2-impl.h"
-
+#include <limits.h>
 int blake2b(void *out, size_t outlen, const void *in, size_t inlen, const void *key, size_t keylen) {
 	blake2b_state S;
 	int ret = -1;
@@ -88,6 +88,37 @@ void inblakefinal (blake2b_state * S,void *in, size_t inlen){
 }
 
 void inblakecompress(blake2b_state *S , uint8_t *block){
+	// l is a ;m is b; n is c ; o is d 
+#define inG(r, i, a, b, c, d, l, m, n, o)                                                    \
+    do {       \
+		uint64_t ba =0;\
+		inxor(inrotr64(b, 63),b,c); \
+		c = c - d;   \
+		inxor(inrotr64(d, 16),d,ba);    \
+		                                                         \
+		inxor(inrotr64(b, 24),b,c);		\
+		c=c-d	;\
+		inxor(inrotr64(d, 32),d,a);	\
+		m[blake2b_sigma[r][2 * i + 0]]  = ((a - b -l)<0) ? ((a - b -l) + UINT64_MAX +1): (a - b -l) \                         
+                                                         \
+        m[blake2b_sigma[r][2 * i + 1]]  = ((ba - b -a)<0) ? ((ba - b -a) + UINT64_MAX +1): (ba - b -a) ;                                                            \
+    } while ((void)0, 0)
+	
+//a = a - b - m[blake2b_sigma[r][2 * i + 1]];    
+//a = a - b - m[blake2b_sigma[r][2 * i + 0]];   
+
+#define inROUND(r)                                                               \
+    do {                                                                         \
+        inG(r, 0, v[0], v[4], v[8], v[12], v[0], v[4], v[8], v[12]);                                      \
+        inG(r, 1, v[1], v[5], v[9], v[13], v[1], v[5], v[9], v[13]);                                      \
+        inG(r, 2, v[2], v[6], v[10], v[14], v[2], v[6], v[10], v[14]);                                     \
+        inG(r, 3, v[3], v[7], v[11], v[15], v[3], v[7], v[11], v[15]);                                     \
+        inG(r, 4, v[0], v[5], v[10], v[15], v[0], v[5], v[10], v[15]);                                     \
+        inG(r, 5, v[1], v[6], v[11], v[12], v[1], v[6], v[11], v[12]);                                     \
+        inG(r, 6, v[2], v[7], v[8], v[13], v[2], v[7], v[8], v[13]);                                      \
+        inG(r, 7, v[3], v[4], v[9], v[14], v[3], v[4], v[9], v[14]);                                      \
+    } while ((void)0, 0)
+
 	uint64_t m[16];
 	uint64_t v[16];
 	unsigned int i, r;
@@ -95,12 +126,13 @@ void inblakecompress(blake2b_state *S , uint8_t *block){
 	for (i = 0; i < 8; ++i) {
 		inxor3(S->h[i] ,S->h[i] , v[i] , v[i + 8]);
 	}
-
+	for (r = 0; r < 12; ++r) {
+		inROUND(r);
+	}
 
 
 
 }
-
 void inxor3(uint64_t a,uint64_t b,uint64_t c,uint64_t d){
 	int k= 0;
 
@@ -125,7 +157,28 @@ void inxor3(uint64_t a,uint64_t b,uint64_t c,uint64_t d){
 
 }
 
+void inxor(int64_t l,int64_t a,int64_t b){
+	int k= 0;
 
+	while(k<sizeof(l)*8){
+		if (l & (0x1 <<k)){
+			a |= 0x1 <<k;
+			b &= 0x0 <<k;
+			
+		}
+		else{
+			b |= 0x1 <<k;
+			a |= 0x1 <<k;
+
+		}
+
+		k+=1;
+	}
+}
+
+static FORCE_INLINE uint64_t inrotr64(const uint64_t w, const unsigned c) {
+	return (w << c) | (w >> (64 - c));
+}
 
 static void blake2b_compress(blake2b_state *S, const uint8_t *block) {
 	uint64_t m[16];
@@ -159,7 +212,7 @@ static void blake2b_compress(blake2b_state *S, const uint8_t *block) {
         d = rotr64(d ^ a, 16);                                                 \
         c = c + d;                                                             \
         b = rotr64(b ^ c, 63);                                                 \
-    } while ((void)0, 0)
+    } while((void)0, 0)
 
 #define ROUND(r)                                                               \
     do {                                                                       \
@@ -177,7 +230,7 @@ static void blake2b_compress(blake2b_state *S, const uint8_t *block) {
 		ROUND(r);
 	}
 
-	for (i = 0; i < 8; ++i) {
+	for(i = 0; i < 8; ++i) {
 		S->h[i] = S->h[i] ^ v[i] ^ v[i + 8];
 	}
 
