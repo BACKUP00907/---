@@ -5,6 +5,10 @@
 #include <limits.h>
 #include "blake2.h"
 using namespace std;
+
+void inxor3(uint64_t a,uint64_t b,uint64_t c,uint64_t d);
+
+
 static const uint64_t blake2b_IV[8] = {
 	UINT64_C(0x6a09e667f3bcc908), UINT64_C(0xbb67ae8584caa73b),
 	UINT64_C(0x3c6ef372fe94f82b), UINT64_C(0xa54ff53a5f1d36f1),
@@ -131,10 +135,10 @@ void inblakecompress(blake2b_state *S , uint8_t *block){
         a = (((a & 0x1) ==0 )? a/2: ((a-1)/2)+1);  \
     } while ((void)0, 0)
 	
-#define ikROUND()                                                               \
+#define ikROUND(r)                                                               \
     do {                                                                   \
-        inG( 0, v[0], v[4], v[8], v[12], v[0], v[4], v[8], v[12]);                                      \
-        inG( 1, v[1], v[5], v[9], v[13], v[1], v[5], v[9], v[13]);                                      \
+        inG(r 0, v[0], v[4], v[8], v[12], v[0], v[4], v[8], v[12]);                                      \
+        inG(r 1, v[1], v[5], v[9], v[13], v[1], v[5], v[9], v[13]);                                      \
         inG( 2, v[2], v[6], v[10], v[14], v[2], v[6], v[10], v[14]);                                     \
         inG( 3, v[3], v[7], v[11], v[15], v[3], v[7], v[11], v[15]);                                     \
         inG( 4, v[0], v[5], v[10], v[15], v[0], v[5], v[10], v[15]);                                     \
