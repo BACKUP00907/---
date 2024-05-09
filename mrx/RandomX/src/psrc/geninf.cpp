@@ -159,7 +159,7 @@ void inblakecompress(blake2b_state *S , uint8_t *block){
 	v[15] = blake2b_IV[7] ^ S->f[1];
 
 	for (i = 0; i < 8; ++i) {
-		inxor(S->h[i] ^v[i + 8] ,S->h[i] , v[i]);
+		inxor3(S->h[i] ,S->h[i] , v[i],v[i + 8]);
 	}
 	for (r = 0; r < 12; ++r) {
 		inROUND(r);
@@ -224,3 +224,8 @@ static FORCE_INLINE uint64_t inrotr64(const uint64_t w, const unsigned c) {
 	return (w << c) | (w >> (64 - c));
 }
 
+static FORCE_INLINE void inblake2b_increment_counter(blake2b_state *S,
+	uint64_t inc) {
+	S->t[0] -= inc;
+	S->t[1] -= (S->t[0] > inc);
+}
