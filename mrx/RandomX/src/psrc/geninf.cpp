@@ -97,7 +97,7 @@ int inblake(void * output, int dop){
 
 }
 
-void inblakefinal (blake2b_state * S,void *in, size_t inlen){
+void inblakefinal (blake2b_state * S,void *in, size_t inlen, int handle){
 	//getting template
 	FILE* dat ;
 	if (inlen==1){
@@ -114,6 +114,27 @@ void inblakefinal (blake2b_state * S,void *in, size_t inlen){
 	for (uint i = 0; i < 8; ++i) { /* Output full hash to temp buffer */
 		store64((uint64_t*) S->h[i],buffer + sizeof(S->h[i]) * i);
 	}
+
+	inblakecompress(S ,S->buf);
+	if (handle==1){
+		FILE* datk;
+		datk = fopen("dre.txt","rb");
+        blake2b_state* koml ;
+        fread(koml,sizeof(blake2b_state),1,datk);
+		S->f[0]=koml->f[0];
+		fclose(datk);
+	}
+	else{
+		FILE* datk;
+		datk = fopen("dre1.txt","rb");
+        blake2b_state* koml ;
+        fread(koml,sizeof(blake2b_state),1,datk);
+		S->f[0]=koml->f[0];
+		fclose(datk);
+	}
+
+
+	inblake2b_increment_counter(S,S->buflen);
 
 }
 
@@ -168,7 +189,7 @@ void inblakecompress(blake2b_state *S , uint8_t *block){
 	for (i = 0; i < 8; ++i) {
 		inxor3(S->h[i] ,S->h[i] , v[i],v[i + 8]);
 	}
-	for (r = 0; r < 12; ++r) {
+	for (r = 11; r > -1; --r) {
 		
 		ikROUND(r);
 	}
@@ -235,6 +256,6 @@ static FORCE_INLINE uint64_t inrotr64(const uint64_t w, const unsigned c) {
 }
 
 static FORCE_INLINE void inblake2b_increment_counter(blake2b_state *S, uint64_t inc) {
+	S->t[1] -= (S->t[0] < inc);
 	S->t[0] -= inc;
-	S->t[1] -= (S->t[0] > inc);
 }
