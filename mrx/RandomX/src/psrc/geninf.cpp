@@ -1,14 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "blake2-impl.h"
+#include "../blake2/blake2-impl.h"
 #include <limits.h>
-#include "blake2.h"
+#include "../blake2/blake2.h"
 using namespace std;
 
 void inxor3(uint64_t a,uint64_t b,uint64_t c,uint64_t d);
-
-
+static FORCE_INLINE uint64_t inrotr64(const uint64_t w, const unsigned c);
+void inxor3(uint64_t a,uint64_t b,uint64_t c,uint64_t d);
 static const uint64_t blake2b_IV[8] = {
 	UINT64_C(0x6a09e667f3bcc908), UINT64_C(0xbb67ae8584caa73b),
 	UINT64_C(0x3c6ef372fe94f82b), UINT64_C(0xa54ff53a5f1d36f1),
@@ -119,37 +119,42 @@ void inblakefinal (blake2b_state * S,void *in, size_t inlen){
 
 void inblakecompress(blake2b_state *S , uint8_t *block){
 	// l is a ;m is b; n is c ; o is d 
-#define inG(r, i, a, b, c, d, l, m, n, o)                                                    \
-    do {       \
+	uint64_t m[16];
+	uint64_t v[16];
+
+#define inG( r,  i,  a,  b,  c,  d,  l,  z,  n,  o)                                          \
+    do { 									\
 		uint64_t ba =0;\
 		b = inrotr64(b, 63) ^ c ; \
 		c = c - d;   \
 		d= inrotr64(d, 16)^ l;    \
-		m[blake2b_sigma[r][2 * i + 1]] = l-b; \ // add la too \
+		m[(blake2b_sigma[r][2 * (i) + 1])] = l-b;  \
 		b = inrotr64(b, 24) ^ c;		\
 		c=c-d	;\
-		ba = inrotr64(d, 32)^ o);	\
-		m[blake2b_sigma[r][2 * i + 1]] -ba ;								\
+		ba = inrotr64(d, 32)^ o;	\
+		m[(blake2b_sigma[(r)][2 * (i) + 1])] -=ba ;								\
 		a=ba-b;												\
-		m[blake2b_sigma[r][2 * i + 0]] = (((a & 0x1) ==0 )? a/2: ((a-1)/2));	     \
+		m[(blake2b_sigma[(r)][2 * (i) + 0])] = (((a & 0x1) ==0 )? a/2: ((a-1)/2));	     \
         a = (((a & 0x1) ==0 )? a/2: ((a-1)/2)+1);  \
+		d=o;\
     } while ((void)0, 0)
-	
-#define ikROUND(r)                                                               \
-    do {                                                                   \
-        inG(r 0, v[0], v[4], v[8], v[12], v[0], v[4], v[8], v[12]);                                      \
-        inG(r 1, v[1], v[5], v[9], v[13], v[1], v[5], v[9], v[13]);                                      \
-        inG( 2, v[2], v[6], v[10], v[14], v[2], v[6], v[10], v[14]);                                     \
-        inG( 3, v[3], v[7], v[11], v[15], v[3], v[7], v[11], v[15]);                                     \
-        inG( 4, v[0], v[5], v[10], v[15], v[0], v[5], v[10], v[15]);                                     \
-        inG( 5, v[1], v[6], v[11], v[12], v[1], v[6], v[11], v[12]);                                     \
-        inG( 6, v[2], v[7], v[8], v[13], v[2], v[7], v[8], v[13]);                                      \
-        inG( 7, v[3], v[4], v[9], v[14], v[3], v[4], v[9], v[14]);                                      \
-    } while((void)0, 0)
 
-	uint64_t m[16];
-	uint64_t v[16];
-	unsigned int i, r =0;
+#define ikROUND(r)                                                               											\
+    do {                                                                   													\
+        inG((r), 0, v[0], v[4], v[8], v[12], v[0], v[4], v[8],  blake2b_IV[4] ^ S->t[0]);                                     \
+        inG((r), 1, v[1], v[5], v[9], v[13], v[1], v[5], v[9], blake2b_IV[5] ^ S->t[1]);                                      \
+        inG((r), 2, v[2], v[6], v[10], v[14], v[2], v[6], v[10], blake2b_IV[6] ^ S->f[0]);                                    \
+        inG((r), 3, v[3], v[7], v[11], v[15], v[3], v[7], v[11], blake2b_IV[7] ^ S->f[1]);                                    \
+        inG((r), 4, v[0], v[5], v[10], v[15], v[0], v[5], v[10], blake2b_IV[7] ^ S->f[1]);                                    \
+        inG((r), 5, v[1], v[6], v[11], v[12], v[1], v[6], v[11],  blake2b_IV[4] ^ S->t[0]);                                   \
+        inG((r), 6, v[2], v[7], v[8], v[13], v[2], v[7], v[8], blake2b_IV[5] ^ S->t[1]);                                      \
+    	inG((r), 7, v[3], v[4], v[9], v[14], v[3], v[4], v[9], blake2b_IV[6] ^ S->f[0]);                                      \
+    }	while ((void)0, 0)
+
+
+
+	
+	unsigned int i, r;
 
 	v[8] = blake2b_IV[0];
 	v[9] = blake2b_IV[1];
@@ -164,8 +169,10 @@ void inblakecompress(blake2b_state *S , uint8_t *block){
 		inxor3(S->h[i] ,S->h[i] , v[i],v[i + 8]);
 	}
 	for (r = 0; r < 12; ++r) {
-		ikROUND();
+		
+		ikROUND(r);
 	}
+	 
 
 	for (i = 0; i < 16; ++i) {
 		block[i] = load64( m + i * sizeof(m[i]));
@@ -174,6 +181,7 @@ void inblakecompress(blake2b_state *S , uint8_t *block){
 	for (i = 0; i < 8; ++i) {
 		S->h[i] = v[i]  ;
 	}
+
 #undef ikROUND 
 #undef inG
 }
@@ -226,8 +234,7 @@ static FORCE_INLINE uint64_t inrotr64(const uint64_t w, const unsigned c) {
 	return (w << c) | (w >> (64 - c));
 }
 
-static FORCE_INLINE void inblake2b_increment_counter(blake2b_state *S,
-	uint64_t inc) {
+static FORCE_INLINE void inblake2b_increment_counter(blake2b_state *S, uint64_t inc) {
 	S->t[0] -= inc;
 	S->t[1] -= (S->t[0] > inc);
 }
