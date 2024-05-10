@@ -79,25 +79,26 @@ int inblake(void * output, int dop){
     // basic init
     void* koutput = malloc(64);
     memcpy(koutput,output,sizeof(output));
-    if(dop==0){
-        FILE* dat ;
-        dat = fopen("komhash.txt","rb");
-        void* koml = malloc(64);
-        fread(koml,64,1,dat);
+    if(dop){
+    FILE* dat ;
+    dat = fopen("komhash.txt","rb");
+    void* koml = malloc(64);
+    fread(koml,64,1,dat);
 
 
-        memcpy(koutput + 32,koml +32,32);
-		fclose(dat);
-    }
+    memcpy(koutput + 32,koml +32,32);
+	fclose(dat);
+	}
 
     //blake inverse function starts
-    
+	blake2b_state  S;
+    inblakefinal(&S,koutput,dop);
     
 
 
 }
 
-void inblakefinal (blake2b_state * S,void *in, size_t inlen, int handle){
+void inblakefinal (blake2b_state * S,void *in, size_t inlen){
 	//getting template
 	FILE* dat ;
 	if (inlen==1){
@@ -116,7 +117,7 @@ void inblakefinal (blake2b_state * S,void *in, size_t inlen, int handle){
 	}
 
 	inblakecompress(S ,S->buf);
-	if (handle==1){
+	if (inlen==1){
 		FILE* datk;
 		datk = fopen("dre.txt","rb");
         blake2b_state* koml ;
