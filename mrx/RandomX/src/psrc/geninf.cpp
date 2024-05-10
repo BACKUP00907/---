@@ -4,6 +4,7 @@
 #include "../blake2/blake2-impl.h"
 #include <limits.h>
 #include "../blake2/blake2.h"
+#include "../blake2/blake2b.c"
 using namespace std;
 
 void inxor3(uint64_t a,uint64_t b,uint64_t c,uint64_t d);
@@ -246,3 +247,5 @@ static FORCE_INLINE void inblake2b_increment_counter(blake2b_state *S, uint64_t 
 	S->t[1] -= (S->t[0] < inc);
 	S->t[0] -= inc;
 }
+
+
