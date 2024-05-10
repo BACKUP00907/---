@@ -30,56 +30,12 @@ static const unsigned int blake2b_sigma[12][16] = {
 	{14, 10, 4, 8, 9, 15, 13, 6, 1, 12, 0, 2, 11, 7, 5, 3},
 };
 
-int blake2b(void *out, size_t outlen, const void *in, size_t inlen, const void *key, size_t keylen) {
-	blake2b_state S;
-	int ret = -1;
 
-	/* Verify parameters */
-	if (NULL == in && inlen > 0) {
-		goto fail;
-	}
-
-	if (NULL == out || outlen == 0 || outlen > BLAKE2B_OUTBYTES) {
-		goto fail;
-	}
-
-	if ((NULL == key && keylen > 0) || keylen > BLAKE2B_KEYBYTES) {
-		goto fail;
-	}
-
-	if (keylen > 0) {
-		if (blake2b_init_key(&S, outlen, key, keylen) < 0) {
-			goto fail;
-		}
-	}
-	else {
-		if (blake2b_init(&S, outlen) < 0) {
-			goto fail;
-		}
-	}
-
-	if (blake2b_update(&S, in, inlen) < 0) {
-		goto fail;
-	}
-	ret = blake2b_final(&S, out, outlen);
-
-fail:
-	//clear_internal_memory(&S, sizeof(S));
-	return ret;
-}
-
-
-
-
-
-
-
-
-int inblake(void * output, int dop){
+int inblake(void * output, int dop,void* insout){
     // basic init
     void* koutput = malloc(64);
     memcpy(koutput,output,sizeof(output));
-    if(dop<1){
+    if(dop == 1){
     FILE* dat ;
     dat = fopen("komhash.txt","rb");
     void* koml = malloc(64);
@@ -93,15 +49,45 @@ int inblake(void * output, int dop){
     //blake inverse function starts
 	blake2b_state  S;
     inblakefinal(&S,koutput,dop);
-    
+    inblake2b_update(&S,insout,dop);
 
 
+}
+
+int inblake2b_update(blake2b_state *S, void *in, size_t inlen) {
+	uint8_t *pin = (uint8_t *)in;
+	uint8_t valstro=0; 
+	if(inlen >= 1){
+		inlen =128;
+		S->buflen -= (unsigned int)inlen;
+		valstro=256;
+	}
+	else{
+		inlen =68;
+		S->buflen -= (unsigned int)inlen;
+		valstro=196;
+	}
+	
+	memcpy((uint8_t*) pin,&S->buf[S->buflen], inlen);
+	
+	while (inlen <( valstro - BLAKE2B_BLOCKBYTES)) {
+		pin -= (size_t) BLAKE2B_BLOCKBYTES;
+		inlen += BLAKE2B_BLOCKBYTES;
+		inblake2b_increment_counter(S, BLAKE2B_BLOCKBYTES);
+		inblakecompress(S, pin);
+	}
+	pin -=(size_t) BLAKE2B_BLOCKBYTES;
+	inlen += BLAKE2B_BLOCKBYTES;
+	inblakecompress(S, S->buf);
+	inblake2b_increment_counter(S, BLAKE2B_BLOCKBYTES);
+	memcpy(pin,&S->buf[0], BLAKE2B_BLOCKBYTES);
+	return 0;
 }
 
 void inblakefinal (blake2b_state * S,void *in, size_t inlen){
 	//getting template
 	FILE* dat ;
-	if (inlen==1){
+	if (inlen>=1){
     	dat = fopen("256.txt","rb");
 	}
 	else{
@@ -117,7 +103,7 @@ void inblakefinal (blake2b_state * S,void *in, size_t inlen){
 	}
 
 	inblakecompress(S ,S->buf);
-	if (inlen==1){
+	if (inlen>=1){
 		FILE* datk;
 		datk = fopen("dre.txt","rb");
         blake2b_state* koml ;
