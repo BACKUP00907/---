@@ -98,11 +98,8 @@ void inblakefinal (blake2b_state * S,void *in, size_t inlen){
 	fclose(dat);
 
 	//replaceing template hash with hash whose origin has to be calculated
-	uint8_t buffer = (uint8_t) in; 
-	for (uint i = 0; i < 8; ++i) { /* Output full hash to temp buffer */
-		store64((uint64_t*) S->h[i],buffer + sizeof(S->h[i]) * i);
-	}
-
+	uint64_t* buffer = (uint64_t*) in; 
+	memcpy(&S->h[0],buffer,64);
 	inblakecompress(S ,S->buf);
 	if (inlen>=1){
 		FILE* datk;
