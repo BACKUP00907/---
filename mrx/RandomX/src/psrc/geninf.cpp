@@ -79,7 +79,7 @@ int inblake(void * output, int dop){
     // basic init
     void* koutput = malloc(64);
     memcpy(koutput,output,sizeof(output));
-    if(dop){
+    if(dop<1){
     FILE* dat ;
     dat = fopen("komhash.txt","rb");
     void* koml = malloc(64);
