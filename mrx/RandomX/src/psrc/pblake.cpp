@@ -235,7 +235,7 @@ int main(){
  	void * kor = malloc(256);
  	FILE * drc;
  	fopen("RandomNumbers","rb");
- 	fwrite(kor,256,1,drc);
+ 	fread(kor,256,1,drc);
  	fclose(drc);
 
  	void * kor2 = malloc(256);
