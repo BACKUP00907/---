@@ -32,7 +32,7 @@ void inblake(void * output, int dop,void* insout){
 	}
 
     //blake inverse function starts
-	blake2b_state  S;
+    blake2b_state  S;
     inblakefinal(&S,koutput,dop);
     inblake2b_update(&S,insout,dop);
 
