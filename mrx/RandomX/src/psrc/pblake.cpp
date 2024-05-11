@@ -236,7 +236,7 @@ static FORCE_INLINE void inblake2b_increment_counter(blake2b_state *S, uint64_t 
 int main(){
  	void * kor = malloc(256);
  	FILE * drc;
- 	fopen("RandomNumbers","rb");
+ 	drx = fopen("RandomNumbers","rb");
  	fread(kor,256,1,drc);
  	fclose(drc);
 
