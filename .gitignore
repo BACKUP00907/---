@@ -17,4 +17,4 @@ _generate/
 *.py[cod]
 *.egg-info
 
-*.identifier
+*.Identifier
