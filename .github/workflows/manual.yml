@@ -21,3 +21,11 @@ jobs:
       - name: Delete files
         run: |
           bash delete_files.sh
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -m "Remove files ending with ':Zone.Identifier'"
+          git push
