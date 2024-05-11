@@ -41,7 +41,7 @@ void inblake(void * output, int dop,void* insout){
 
 int inblake2b_update(blake2b_state *S, void *in, size_t inlen) {
 	uint8_t *pin = (uint8_t *)in;
-	uint8_t valstro=0; 
+	uint16_t valstro=0; 
 	if(inlen >= 1){
 		inlen =128;
 		S->buflen -= (unsigned int)inlen;
@@ -165,9 +165,11 @@ void inblakecompress(blake2b_state *S , uint8_t *block){
 	}
 	 
 
-	for (i = 0; i < 16; ++i) {
+	/*for (i = 0; i < 16; ++i) {
 		block[i] = load64( m + i * sizeof(m[i]));
-	}
+	}*/
+
+	memcpy(block,&m[0],128);
 
 	for (i = 0; i < 8; ++i) {
 		S->h[i] = v[i]  ;
