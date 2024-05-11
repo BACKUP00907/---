@@ -16,5 +16,5 @@ _generate/
 *.so
 *.py[cod]
 *.egg-info
-*:Zone.Identifier
+*Zone.Identifier
 *.identifier
