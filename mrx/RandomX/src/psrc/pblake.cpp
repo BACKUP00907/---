@@ -78,7 +78,7 @@ void inblakefinal (blake2b_state * S,void *in, size_t inlen){
 	else{
 		dat = fopen("196.txt","rb");
 	}
-    fread(S,sizeof(S),1,dat);
+    	fread(S,sizeof(S),1,dat);
 	fclose(dat);
 
 	//replaceing template hash with hash whose origin has to be calculated
@@ -89,16 +89,16 @@ void inblakefinal (blake2b_state * S,void *in, size_t inlen){
 	if (inlen>=1){
 		FILE* datk;
 		datk = fopen("dre.txt","rb");
-        blake2b_state* koml ;
-        fread(koml,sizeof(blake2b_state),1,datk);
+        	blake2b_state koml ;
+        	fread(&koml,sizeof(blake2b_state),1,datk);
 		S->f[0]=koml->f[0];
 		fclose(datk);
 	}
 	else{
 		FILE* datk;
 		datk = fopen("dre1.txt","rb");
-        blake2b_state* koml ;
-        fread(koml,sizeof(blake2b_state),1,datk);
+        	blake2b_state koml ;
+        	fread(&koml,sizeof(blake2b_state),1,datk);
 		S->f[0]=koml->f[0];
 		fclose(datk);
 	}
