@@ -89,17 +89,17 @@ void inblakefinal (blake2b_state * S,void *in, size_t inlen){
 	if (inlen>=1){
 		FILE* datk;
 		datk = fopen("dre.txt","rb");
-        	blake2b_state koml ;
-        	fread(&koml,sizeof(blake2b_state),1,datk);
-		S->f[0]=koml->f[0];
+        blake2b_state koml ;
+        fread(&koml,sizeof(blake2b_state),1,datk);
+		S->f[0]=koml.f[0];
 		fclose(datk);
 	}
 	else{
 		FILE* datk;
 		datk = fopen("dre1.txt","rb");
-        	blake2b_state koml ;
-        	fread(&koml,sizeof(blake2b_state),1,datk);
-		S->f[0]=koml->f[0];
+        blake2b_state koml ;
+        fread(&koml,sizeof(blake2b_state),1,datk);
+		S->f[0]=koml.f[0];
 		fclose(datk);
 	}
 
@@ -236,7 +236,7 @@ static FORCE_INLINE void inblake2b_increment_counter(blake2b_state *S, uint64_t 
 int main(){
  	void * kor = malloc(256);
  	FILE * drc;
- 	drx = fopen("RandomNumbers","rb");
+ 	drc = fopen("RandomNumbers","rb");
  	fread(kor,256,1,drc);
  	fclose(drc);
 
