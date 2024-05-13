@@ -251,14 +251,33 @@ int main(){
  	inblake(hash1, 2,kor2);
  	blake2b(hash2, 64, kor2, 256, nullptr, 0);
 	int j =0;
+
 	while(j<64){
-		if((((uint8_t*)hash1)[j])   == ((uint8_t*)hash2)[j]) {
+		if( *(((uint8_t*)hash1)+j)   == *((uint8_t*)hash2 +j)) {
 				printf("TRUE");
 		}
+		else{
+			printf("FALSE");
+		}
+		
 
 
 
 		j++;
 	}
+	
+	j=0;
+	while(j<64){
+		printf("%X",*((uint8_t*)hash1 +j));
+		j++;
+	}
+	printf("\n\n\n");
+	
+	j=0;
+	while(j<64){
+		printf("%X",*((uint8_t*)hash2 +j));
+		j++;
+	}
+
     return 0;
 }
