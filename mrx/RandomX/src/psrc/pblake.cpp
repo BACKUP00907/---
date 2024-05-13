@@ -157,7 +157,7 @@ void inblakecompress(blake2b_state *S , uint8_t *block){
 	v[14] = blake2b_IV[6] ^ S->f[0];
 	v[15] = blake2b_IV[7] ^ S->f[1];
 
-	for (i = 0; i < 8; ++i) {
+	for (i = 7; i > -1; --i) {
 		inxor3(S->h[i] ,S->h[i] , v[i],v[i + 8]);
 	}
 	for (r = 11; r > -1; --r) {
