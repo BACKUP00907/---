@@ -131,15 +131,16 @@ void inblakecompress(blake2b_state *S , uint8_t *block){
     } while ((void)0, 0)
 
 #define ikROUND(r)                                                               											\
-    do {                                                                   													\
+    do {  \
+		inG((r), 7, v[3], v[4], v[9], v[14], v[3], v[4], v[9], blake2b_IV[6] ^ S->f[0]);                 			   		\
+		inG((r), 6, v[2], v[7], v[8], v[13], v[2], v[7], v[8], blake2b_IV[5] ^ S->t[1]);                                      \
+		inG((r), 5, v[1], v[6], v[11], v[12], v[1], v[6], v[11],  blake2b_IV[4] ^ S->t[0]);                                   \
+		inG((r), 4, v[0], v[5], v[10], v[15], v[0], v[5], v[10], blake2b_IV[7] ^ S->f[1]);                                    \
+		inG((r), 3, v[3], v[7], v[11], v[15], v[3], v[7], v[11], blake2b_IV[7] ^ S->f[1]);                                    \ 
+		inG((r), 2, v[2], v[6], v[10], v[14], v[2], v[6], v[10], blake2b_IV[6] ^ S->f[0]);                                    \ 
+		inG((r), 1, v[1], v[5], v[9], v[13], v[1], v[5], v[9], blake2b_IV[5] ^ S->t[1]);                                      \
         inG((r), 0, v[0], v[4], v[8], v[12], v[0], v[4], v[8],  blake2b_IV[4] ^ S->t[0]);                                     \
-        inG((r), 1, v[1], v[5], v[9], v[13], v[1], v[5], v[9], blake2b_IV[5] ^ S->t[1]);                                      \
-        inG((r), 2, v[2], v[6], v[10], v[14], v[2], v[6], v[10], blake2b_IV[6] ^ S->f[0]);                                    \
-        inG((r), 3, v[3], v[7], v[11], v[15], v[3], v[7], v[11], blake2b_IV[7] ^ S->f[1]);                                    \
-        inG((r), 4, v[0], v[5], v[10], v[15], v[0], v[5], v[10], blake2b_IV[7] ^ S->f[1]);                                    \
-        inG((r), 5, v[1], v[6], v[11], v[12], v[1], v[6], v[11],  blake2b_IV[4] ^ S->t[0]);                                   \
-        inG((r), 6, v[2], v[7], v[8], v[13], v[2], v[7], v[8], blake2b_IV[5] ^ S->t[1]);                                      \
-    	inG((r), 7, v[3], v[4], v[9], v[14], v[3], v[4], v[9], blake2b_IV[6] ^ S->f[0]);                                      \
+    	                                      \
     }	while ((void)0, 0)
 
 
